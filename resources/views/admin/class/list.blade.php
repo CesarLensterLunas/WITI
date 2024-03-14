@@ -73,7 +73,9 @@
                       <th >Created By</th>
                       <th >Created Date</th>
                       <th >Action</th>
+                     
                     </tr>
+                    
                   </thead>
                   <tbody>
                   
@@ -90,13 +92,14 @@ Inactive
 </td>
 <td>{{ $value->created_by_name }}</td>
 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-<td></td>
+<td> <a href="{{ url('admin/class/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
+                      <a href="{{ url('admin/class/Delete/'.$value->id) }}" class="btn btn-danger">Delete</a></td>
 </tr> @endforeach
                    
                   </tbody>
                 </table>
                 <div style="padding; 10px;  float: right;">
-                
+                {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
               </div>
               <!-- /.card-body -->
             </div>

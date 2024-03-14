@@ -46,6 +46,10 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('admin/class/list', [ClassController::class, 'list']);
     Route::get('admin/class/add', [ClassController::class, 'add']);
     Route::post('admin/class/add', [ClassController::class, 'insert']);
+    Route::get('admin/class/edit/{id}', [ClassController::class, 'edit']);    
+    Route::post('admin/class/edit/{id}', [ClassController::class, 'update']); 
+    Route::get('admin/class/Delete/{id}', [ClassController::class, 'Delete']);
+
 });
 
 Route::group(['middleware'=>'teacher'], function(){
