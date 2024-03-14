@@ -52,5 +52,11 @@ $save->status = $request->status;
 $save->save();
 return redirect('admin/class/list')->with('success', "Class Successfully Updated");
 }
-
+public function delete($id)
+{
+$save->ClassModel::getSingle($id);
+$save->is_delete = 1;
+$save->save();
+return redirect()->back()->with('success', "Class Successfully Deleted");
+}
 }
