@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashbaordController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassController;
+use App\Http\Controllers\SubjectController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,15 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('admin/class/edit/{id}', [ClassController::class, 'edit']);    
     Route::post('admin/class/edit/{id}', [ClassController::class, 'update']); 
     Route::get('admin/class/Delete/{id}', [ClassController::class, 'Delete']);
+
+    
+ //subject url 
+ Route::get('admin/subject/list', [SubjectController::class, 'list']);
+ Route::get('admin/subject/add', [SubjectController::class, 'add']);
+ Route::post('admin/subject/add', [SubjectController::class, 'insert']);
+ Route::get('admin/subject/edit/{id}', [SubjectController::class, 'edit']);    
+ Route::post('admin/subject/edit/{id}', [SubjectController::class, 'update']); 
+ Route::get('admin/subject/Delete/{id}', [SubjectController::class, 'Delete']);
 
 });
 
