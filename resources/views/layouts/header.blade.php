@@ -5,8 +5,8 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      
-      
+     
+     
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
@@ -98,7 +98,7 @@
           <a href="#" class="dropdown-item dropdown-footer">See All Notifications</a>
         </div>
       </li>
-      
+     
     </ul>
   </nav>
   <!-- /.navbar -->
@@ -119,8 +119,8 @@
           <a href="#" class="d-block">{{ Auth::user()->name }}</a>
         </div>
       </div>
-    
-  
+   
+ 
 
       <!-- Sidebar Menu -->
       <nav class="mt-2">
@@ -132,7 +132,7 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-              
+             
               </p>
             </a>
           </li>
@@ -152,6 +152,20 @@
               </p>
             </a>
           </li>
+
+
+         
+         
+          <li class="nav-item">
+            <a href="{{ url('admin/subject/list') }}" class="nav-link @if(Request::segment(2)=='subject') active @endif">
+              <i class="nav-icon far fa-user"></i>
+              <p>
+              Subject
+              </p>
+            </a>
+          </li>
+
+
 
 
         @elseif(Auth::user()->user_type==2)
@@ -178,14 +192,14 @@
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Dashboard
-                
+               
               </p>
             </a>
           </li>
 
         @endif
 
-          
+         
           <li class="nav-item">
             <a href="{{ url('logout') }}" class="nav-link">
               <i class="nav-icon far fa-user"></i>
@@ -201,3 +215,4 @@
     </div>
     <!-- /.sidebar -->
   </aside>
+
