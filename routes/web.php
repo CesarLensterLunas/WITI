@@ -7,11 +7,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ClassController;
 use App\Http\Controllers\SubjectController;
 use App\Http\Controllers\ClassSubjectController;
-<<<<<<< HEAD
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
-=======
->>>>>>> d73d2a0232a8b1b66d97ae091cec56531209b093
 
 
 /*
