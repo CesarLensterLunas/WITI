@@ -87,11 +87,6 @@
                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                 <td>
                                     <a href="{{ url('admin/assign_subject/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
-
-                                    <a href="{{ url('admin/assign_subject/edit_single/'.$value->id) }}" class="btn btn-primary">
-                                        Edit Single</a>
-
-
                                     <a href="{{ url('admin/assign_subject/Delete/'.$value->id) }}" class="btn btn-danger">Delete</a>
                                 </td>
                             </tr>
@@ -99,8 +94,6 @@
                         </tbody>
                     </table>
                     <div style="padding: 10px; float: right;">
-                    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
-
                         <!-- Additional content if needed -->
                     </div>
                 </div>
