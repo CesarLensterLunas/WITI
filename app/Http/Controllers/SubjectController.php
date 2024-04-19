@@ -70,5 +70,14 @@ $save = SubjectModel::getSingle($id);
 $save->save();
 return redirect()->back()->with('success', "Subject Sucessfully Deleted");
 }
+
+public function MySubject()
+{
+    $data['getRecord'] = SubjectModel::getRecord();
+    $data['header_title'] = "My Subject ";
+
+    return view('student.my_subject', $data);
+}
+
 }
 
