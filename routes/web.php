@@ -10,6 +10,7 @@ use App\Http\Controllers\ClassSubjectController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
+use App\Http\Controllers\AssignClassTeacherController;
 
 
 /*
@@ -93,6 +94,11 @@ Route::group(['middleware'=>'admin'], function(){
 
  Route::get('admin/account', [UserController::class, 'MyAccount']);
  Route::post('admin/account', [UserController::class, 'UpdateMyAccountAdmin']);
+
+ 
+Route::get('admin/assign_class_teacher/list', [AssignClassTeacherController::class, 'list']);
+Route::get('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'add']);
+Route::post('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'insert']);
 
  
 

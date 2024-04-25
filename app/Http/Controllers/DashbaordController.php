@@ -11,26 +11,25 @@ class DashbaordController extends Controller
     public function dashboard()
     {
         $data['header_title'] = 'Dashboard';
-        $adminCount = $this->getUserCount('admin');
-        $teacherCount = $this->getUserCount('teacher');
-        $studentCount = $this->getUserCount('student');
-        $parentCount = $this->getUserCount('parent');
+        $adminCount = $this->getUserCount(1); // Assuming 1 is the user_type for admin
+        $teacherCount = $this->getUserCount(3); // Assuming 2 is the user_type for teacher
+        $studentCount = $this->getUserCount(2); // Assuming 3 is the user_type for student
+        
         $userRegistrations = $this->getUserRegistrations();
 
         $data['adminCount'] = $adminCount;
         $data['teacherCount'] = $teacherCount;
         $data['studentCount'] = $studentCount;
-        $data['parentCount'] = $parentCount;
+        
         $data['userRegistrations'] = $userRegistrations;
 
         if (Auth::user()->user_type == 1) {
             return view('admin.dashboard', $data);
-        } elseif (Auth::user()->user_type == 2) {
-            return view('teacher.dashboard', $data);
         } elseif (Auth::user()->user_type == 3) {
+            return view('teacher.dashboard', $data);
+        } elseif (Auth::user()->user_type == 2) {
             return view('student.dashboard', $data);
-        } elseif (Auth::user()->user_type == 4) {
-            return view('parent.dashboard', $data);
+        
         }
     }
 
@@ -41,6 +40,6 @@ class DashbaordController extends Controller
 
     private function getUserRegistrations()
     {
-        return User::where('user_type', '!=', 4)->count();
+        return User::where('user_type', '!=', 4)->count(); // Assuming 4 is the user_type for parent
     }
 }
