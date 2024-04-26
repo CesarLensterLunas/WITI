@@ -24,11 +24,11 @@ use App\Http\Controllers\AssignClassTeacherController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('landingPage');
+});
 
-Route::get('/', [AuthController::class, 'login']);
+Route::get('login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'Authlogin']);
 Route::get('logout', [AuthController::class, 'logout']);
 Route::get('forgot-password', [AuthController::class, 'forgotpassword']);
