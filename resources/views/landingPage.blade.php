@@ -214,14 +214,14 @@
                 <h2 class="subTitle text-center">Get Involved</h2>
                 <div class="row">
                     <div class="col-md-4">
-                        <img src="{{ url('\upload\profile\seniorhigh.png') }}" alt="Image 1">
+                        <img src="{{ url('\upload\profile\seniorhigh.webp') }}" alt="Image 1">
                     </div>
                     <div class="col-md-4">
                     <img src="{{ url('\upload\profile\logo.webp') }}" alt="Image 3">
                         
                     </div>
                     <div class="col-md-4">
-                    <img src="{{ url('\upload\profile\college.png') }}" alt="Image 2">
+                    <img src="{{ url('\upload\profile\college.webp') }}" alt="Image 2">
                     </div>
                 </div>
                 <p class="lead text-center">We offer a wide range of extracurricular activities, clubs, and sports programs to engage students outside the classroom. From performing arts to STEM competitions, there's something for everyone to explore their interests and passions.</p>
