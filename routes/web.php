@@ -25,9 +25,21 @@ use App\Http\Controllers\AssignClassTeacherController;
 */
 
 Route::get('/', function () {
-    return view('landingPage');
+    if (Auth::check()) { // Check if user is logged in
+        // Redirect based on user role
+        if (Auth::user()->user_type == 1) {
+            return redirect('admin/dashboard');
+        } elseif (Auth::user()->user_type == 2) {
+            return redirect('teacher/dashboard');
+        } elseif (Auth::user()->user_type == 3) {
+            return redirect('student/dashboard');
+        } 
+    }
+    return view('landingPage'); // If not logged in, show landing page
 });
 
+
+// Route::get('/', [AuthController::class, 'login']);
 Route::get('login', [AuthController::class, 'login']);
 Route::post('login', [AuthController::class, 'Authlogin']);
 Route::get('logout', [AuthController::class, 'logout']);
