@@ -11,7 +11,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignClassTeacherController;
-
+use App\Http\Controllers\CommunicateController;
 
 /*
 |--------------------------------------------------------------------------
@@ -112,7 +112,11 @@ Route::get('admin/assign_class_teacher/list', [AssignClassTeacherController::cla
 Route::get('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'add']);
 Route::post('admin/assign_class_teacher/add', [AssignClassTeacherController::class, 'insert']);
 
- 
+
+//communicate
+Route::get('admin/communicate/notice_board', [CommunicateController::class, 'NoticeBoard']);
+Route::get('admin/communicate/notice_board/add', [CommunicateController::class, 'AddNoticeBoard']);
+Route::post('admin/communicate/notice_board/add', [CommunicateController::class, 'InsertNoticeBoard']);
 
  //admin/change_password
 
