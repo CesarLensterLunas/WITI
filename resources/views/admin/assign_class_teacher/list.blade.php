@@ -12,6 +12,7 @@
                 </div>
                 <div class="col-sm-6" style="text-align: right;">
                     <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Add New Assign Class Teacher </a>
+                    
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -46,32 +47,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                        @foreach($getRecord as $value)
-<tr>
-    <td>{{ $value->id }}</td>
-    <td>{{ $value->class_name }}</td>
-    <td>{{ $value->teacher_name }}</td>
-    <td>
-        @if($value->status == 0)
-        Active
-        @else
-        Inactive
-        @endif
-    </td>
-    <td>{{ $value->created_by_name }}</td>
-    <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-    <td>
-        
-    </td>
-</tr>
-@endforeach
-
-                        </tbody>
-                    </table>
-                    <div style="padding: 10px; float: right;">
-    {!! $getRecord->appends(Illuminate\Support\Facades\Request::except('page'))->links() !!}
+    @foreach($getRecord as $value)
+    <tr>
+        <td>{{ $value->id }}</td>
+        <td>{{ $value->class_name }}</td>
+        <td>{{ $value->teacher_name }}</td>
+        <td>
+            @if($value->status == 'Active')
+            Active
+            @else
+            Inactive
+            @endif
+        </td>
+        <td>{{ $value->created_by_name }}</td>
+        <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+        <td></td>
+    </tr>
+    @endforeach
+</tbody>
+</table>
+<div style="padding: 10px; float: right;">
+    {!! $getRecord->appends(request()->except('page'))->links() !!}
 </div>
-
                         <!-- Additional content if needed -->
                     </div>
                 </div>
