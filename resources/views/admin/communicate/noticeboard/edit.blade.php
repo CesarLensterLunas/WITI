@@ -65,9 +65,6 @@
                     <label>Message</label>
                     <textarea id="compose-textarea" class="form-control"  name="message" style="height: 300px">{{ $getRecord->message }}</textarea>
                 </div>
-
-
-                  
                 </div>
                 <!-- /.card-body -->
 
