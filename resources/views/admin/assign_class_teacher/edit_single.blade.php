@@ -36,7 +36,7 @@
 
 </div>
 <div class="form-group">
-                    <label>Teacher Name</label>
+                    <label>Teacheru Name</label>
                     <select class="form-control" name="class_id" required>
                     <option value="">Select Class</option>
                     @foreach($getClass as $class)
