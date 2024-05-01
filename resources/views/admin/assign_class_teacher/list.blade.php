@@ -8,10 +8,10 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Assign Class Teacher </h1>
+                    <h1>Assign Class Teacher</h1>
                 </div>
                 <div class="col-sm-6" style="text-align: right;">
-                    <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Add New Assign Class Teacher </a>
+                    <a href="{{ url('admin/assign_class_teacher/add') }}" class="btn btn-primary">Add New Assign Class Teacher</a>
                 </div>
             </div>
         </div><!-- /.container-fluid -->
@@ -22,8 +22,6 @@
         <!-- /.col -->
         <div class="col-md-12">
             <!-- general form elements -->
-            
-           
 
             @include('_message')
 
@@ -46,35 +44,35 @@
                             </tr>
                         </thead>
                         <tbody>
-    @foreach($getRecord as $value)
-    <tr>
-        <td>{{ $value->id }}</td>
-        <td>{{ $value->class_name }}</td>
-        <td>{{ $value->teacher_name }}</td>
-        <td>
-            @if($value->status == 'Active')
-            Active
-            @else
-            Inactive
-            @endif
-        </td>
-        <td>{{ $value->created_by_name }}</td>
-        <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
-        <td></td>
-    </tr>
-    @endforeach
-</tbody>
-</table>
-<div style="padding: 10px; float: right;">
-    {!! $getRecord->appends(request()->except('page'))->links() !!}
-</div>
-
-                        <!-- Additional content if needed -->
+                            @foreach($getRecord as $value)
+                            <tr>
+                                <td>{{ $value->id }}</td>
+                                <td>{{ $value->class_name }}</td>
+                                <td>{{ $value->teacher_name }}</td>
+                                <td>
+                                    @if($value->status == 'Active')
+                                    Active
+                                    @else
+                                    Inactive
+                                    @endif
+                                </td>
+                                <td>{{ $value->created_by_name }}</td>
+                                <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
+                                <td>
+                                    <a href="{{ url('admin/assign_class_teacher/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
+                                    <a href="{{ url('admin/assign_class_teacher/edit_single/'.$value->id) }}" class="btn btn-primary">Edit Single</a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <div style="padding: 10px; float: right;">
+                        {!! $getRecord->appends(request()->except('page'))->links() !!}
                     </div>
+                    <!-- Additional content if needed -->
                 </div>
-                <!-- /.card-body -->
             </div>
-            <!-- /.card -->
+            <!-- /.card-body -->
         </div>
         <!-- /.col -->
     </section>
