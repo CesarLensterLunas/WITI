@@ -24,7 +24,7 @@
           <div class="col-md-12">
           <div class="card  ">
             <div class="card-header">
-                <h3 class="card-title">Search Admin</h3>
+                <h3 class="card-title">Search Notice Baord</h3>
               </div>
               <form method="get" action="">
                 <div class="card-body">

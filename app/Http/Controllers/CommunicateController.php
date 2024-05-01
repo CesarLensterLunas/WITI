@@ -90,6 +90,13 @@ public function DeleteNoticeBoard($id)
     return redirect()->back()->with('success', "Notice Board successfully deleted");
 }
 
+public function MyNoticeBoardStudent()
+{
+    $data['getRecord']=NoticeBoardModel::getRecordUser(Auth::user()->user_type);
+    $data['header_title'] = 'My Notice Board';
+    return view('student.my_notice_board', $data);
+}
+
 
     }
 
