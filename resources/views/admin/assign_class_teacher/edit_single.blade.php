@@ -34,51 +34,23 @@
                     @endforeach
                 </select>
 
-</div>
-<div class="form-group">
+               </div>
+                <div class="form-group">
                     <label>Teacher Name</label>
-                    <select class="form-control" name="class_id" required>
-                    <option value="">Select Class</option>
-                    @foreach($getClass as $class)
-                    <option {{($getRecord->class_id==$class->id) ? 'selected':''}} value="{{ $class->id }}">{{ $class->name }}</option>
+                    <select class="form-control" name="teacher_id" required>
+                    <option value="">Select Teacher</option>
+                    @foreach($getTeacher as $teacher)
+                    <option {{ ($getRecord->teacher_id==$teacher->id) ? 'selected':''}} value="{{ $teachers->id }}">{{ $teacher->name }} {{ $teacher->last_name }}</option>
                     @endforeach
                 </select>
-
-</div>
-
-
-
-
-
-                <div class="form-group">
-    <label>Teacher Name</label>
-    @foreach($getTeacher as $teacher)
-        <div>
-            <label style="font-weight: normal;">
-                @php
-                $checked = '';
-                @endphp
-                @foreach($getAssignTeacherID as $teacherID)
-                    @if($teacherID->teacher_id == $teacher->id)
-                        @php
-                        $checked = 'checked';
-                        @endphp
-                    @endif
-                @endforeach
-                <input {{ $checked }} type="checkbox" value="{{ $teacher->id }}" name="teacher_id[]"> {{ $teacher->name }} {{ $teacher->last_name }}
-            </label>
-        </div>
-    @endforeach
-</div>
-
-    
+ 
                   </div>
                   <div class="form-group">
-    <label>Status</label>
-    <select class="form-control" name="status">
-        <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Active</option>
-        <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
-    </select>
+            <label>Status</label>
+            <select class="form-control" name="status">
+           <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Active</option>
+           <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
+           </select>
 </div>
 <!--/.card-body -->
 <div class="card-footer">

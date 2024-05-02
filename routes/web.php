@@ -114,6 +114,9 @@ Route::post('admin/assign_class_teacher/add', [AssignClassTeacherController::cla
 Route::get('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'edit']);
 Route::post('admin/assign_class_teacher/edit/{id}', [AssignClassTeacherController::class, 'update']);
  Route::get('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'edit_single']);
+ Route::post('admin/assign_class_teacher/edit_single/{id}', [AssignClassTeacherController::class, 'update_single']);
+ Route::get('admin/assign_class_teacher/Delete/{id}', [AssignClassTeacherController::class, 'Delete']);
+
 
 
 //communicate
