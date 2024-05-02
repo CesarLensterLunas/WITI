@@ -137,6 +137,15 @@ public function delete($id)
     return redirect()->back()->with('success', "Assign Class to Teacher Successfully Deleted");
 }
 
+public function MyClassSubject()
+{
+    $data['getRecord'] = AssignClassTeacherModel::getMyClassSubject(Auth::user()->id);
+    $data['header_title'] = "My Class & Subject";
+    return view('teacher.my_class_subject', $data);
+}
+
+
+
             }
          
     

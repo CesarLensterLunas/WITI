@@ -192,6 +192,12 @@ else
 abort (404);
 }
 }
+public function myStudent()
+{
+    $data['getRecord'] = User::getStudent();
+    $data['header_title'] = "My Student List";
+    return view('admin.teacher.my_student', $data);
+}
 
     
 }

@@ -40,7 +40,7 @@
                     <select class="form-control" name="teacher_id" required>
                     <option value="">Select Teacher</option>
                     @foreach($getTeacher as $teacher)
-                    <option {{ ($getRecord->teacher_id==$teacher->id) ? 'selected':''}} value="{{ $teachers->id }}">{{ $teacher->name }} {{ $teacher->last_name }}</option>
+                    <option {{ ($getRecord->teacher_id==$teacher->id) ? 'selected':''}} value="{{ $teacher->id }}">{{ $teacher->name }} {{ $teacher->last_name }}</option>
                     @endforeach
                 </select>
  

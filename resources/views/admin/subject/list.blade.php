@@ -65,8 +65,7 @@
                   <thead>
                     <tr>
                       <th >#</th>
-                      <th>Name</th>
-                      <th>Type</th>
+                      <th>Subject Name</th>
                       <th>Status</th>
                       <th >Created By</th>
                       <th >Created Date</th>
