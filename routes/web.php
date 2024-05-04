@@ -12,6 +12,8 @@ use App\Http\Controllers\StudentController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\AssignClassTeacherController;
 use App\Http\Controllers\CommunicateController;
+use App\Http\Controllers\ClassTimetableController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +105,11 @@ Route::group(['middleware'=>'admin'], function(){
  Route::get('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'edit_single']);    
  Route::post('admin/assign_subject/edit_single/{id}', [ClassSubjectController::class, 'update_single']);
 
+ Route::get('admin/class_timetable/list', [ClassTimetableController::class, 'list']);
+  
+
+
+
 
  Route::get('admin/account', [UserController::class, 'MyAccount']);
  Route::post('admin/account', [UserController::class, 'UpdateMyAccountAdmin']);
@@ -146,7 +153,7 @@ Route::group(['middleware'=>'teacher'], function(){
 
      
    
-     Route::post('teacher/my_student', [StudentController::class, 'MyStudent']);
+     Route::get('teacher/my_student', [StudentController::class, 'MyStudent']);
 
    
      Route::get('teacher/my_class_subject', [AssignClassTeacherController::class, 'MyClassSubject']);

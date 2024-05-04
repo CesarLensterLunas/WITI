@@ -25,11 +25,14 @@
   <link rel="stylesheet" href="{{ url('public/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ url('public/plugins/summernote/summernote-bs4.min.css') }}">
-  @yield('style')
+
+  
+ <link rel="stylesheet" href="{{ url('public/plugins/fullcalendar/main.css') }}">
+ 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
-
+ @yield('style')
 
 @include('layouts.header')
 @yield('content')

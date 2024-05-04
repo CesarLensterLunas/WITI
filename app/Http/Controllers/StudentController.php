@@ -192,11 +192,11 @@ else
 abort (404);
 }
 }
-public function myStudent()
+public function MyStudent()
 {
-    $data['getRecord'] = User::getStudent();
+    $data['getRecord'] = User::getTeacherStudent(Auth::user()->id);
     $data['header_title'] = "My Student List";
-    return view('admin.teacher.my_student', $data);
+    return view('teacher.my_student', $data);
 }
 
     
