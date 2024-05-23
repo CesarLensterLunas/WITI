@@ -2,17 +2,23 @@
 
 namespace App\Models;
 
-// use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
-use Request;
+use Rappasoft\LaravelAuthenticationLog\Traits\AuthenticationLoggable;
+ 
+  use Request;
 
-class User extends Authenticatable
+class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable;
 
+    
+    use Notifiable, AuthenticationLoggable;
+
+    use HasApiTokens, HasFactory, Notifiable;
+    protected $guard ='web';
     /**
      * The attributes that are mass assignable.
      *
@@ -48,6 +54,15 @@ class User extends Authenticatable
         return self::find($id);
 
     }
+    
+    static public function getSingleClass($id)
+{
+    return self::select('users.class_id', 'class.amount', 'class.name as class_name')
+        ->join('class', 'class.id', '=', 'users.class_id')
+        ->where('users.id', $id)
+        ->first();
+}
+
 
 
     static public function getAdmin()
@@ -68,138 +83,19 @@ class User extends Authenticatable
                               $return =  $return->whereDate('Created_at','=', Request::get('date'));
                         }
         $return =  $return->orderBy('id','desc')
-                        ->paginate(1);
-        return $return;
-
-
-    }
-    static public function getTeacher ()
-    {
-         $return = self:: select('users.*')
-                        ->where('users.user_type','=',2)
-                        ->where('users.is_delete','=',0);
-
-                        if (!empty(Request::get('name'))) {
-                            $return = $return->where('users.name', 'like', '%' . Request::get('name') . '%');
-                        }
-                        
-                        if (!empty(Request::get('last_name'))) {
-                            $return = $return->where('users.last_name', 'like', '%' . Request::get('last_name') . '%');
-                        }
-                        
-                        if (!empty(Request::get('email'))) {
-                            $return = $return->where('users.email', 'like', '%' . Request::get('email') . '%');
-                        }
-                        
-                        if (!empty(Request::get('gender'))) {
-                            $return = $return->where('users.gender', '=', Request::get('gender'));
-                        }
-                        
-                        if (!empty(Request::get('mobile_number'))) {
-                            $return = $return->where('users.mobile_number', 'like', '%' . Request::get('mobile_number') . '%');
-                        }
-                        
-                        if (!empty(Request::get('marital_status'))) {
-                            $return = $return->where('users.marital_status', 'like', '%' . Request::get('marital_status') . '%');
-                        }
-                        if (!empty(Request::get('address'))) {
-                            $return = $return->where('users.address', 'like', '%' . Request::get('address') . '%');
-                        }
-                        
-                        if (!empty(Request::get('admission_date'))) {
-                            $return = $return->whereDate('users.admission_date', '=', Request::get('admission_date'));
-                        }
-                        
-                        if (!empty(Request::get('date'))) {
-                            $return = $return->whereDate('users.created_at', '=', Request::get('date'));
-                        }
-                        
-                        if (!empty(Request::get('status'))) {
-                            $status = (Request::get('status') == 100) ? null : 1;
-                            $return = $return->where('users.status', '=', $status);
-                        }
-                        
-
-        $return =  $return->orderBy('users.id','desc')
                         ->paginate(20);
         return $return;
-                    }
-    // get student
 
-    static public function getTeacherStudent($teacher_id)
-    {
-        $return = self::select('users.*', 'class.name as class_name')
-            ->join('class', 'class.id', '=', 'users.class_id')
-            ->join('assign_class_teacher', 'assign_class_teacher.class_id', '=', 'class.id')
-            ->where('assign_class_teacher.teacher_id', '=', $teacher_id)
-            ->where('users.user_type', '=', 3)
-            ->where('users.is_delete', '=', 0); 
-        $return = $return->orderBy('users.id', 'desc')
-            ->groupBy('users.id')
-            ->paginate(20);
-    
-        return $return;
+
     }
+   
+    
     
 
     
    
-    // get student
-    static public function getStudent()
-    {
-         $return = self:: select('users.*','class.name as class_name')
-                        ->join('class', 'class.id', '=', 'users.class_id', 'left')
-                        ->where('users.user_type','=',3)
-                        ->where('users.is_delete','=',0);
 
-                        if (!empty(Request::get('name')))
-                        {
-                              $return =  $return->where('users.name','like','%'.Request::get('name').'%');
-                        }
-
-                        if (!empty(Request::get('last_name')))
-                        {
-                              $return =  $return->where('last_name','like','%'.Request::get('last_name').'%');
-                        }
-
-                        if (!empty(Request::get('email')))
-                        {
-                              $return =  $return->where('email','like','%'.Request::get('email').'%');
-                        }
-
-                        if (!empty(Request::get('admission_number')))
-                        {
-                              $return =  $return->where('admission_number','like','%'.Request::get('admission_number').'%');
-                        }
-
-                        if (!empty(Request::get('roll_number')))
-                        {
-                              $return =  $return->where('roll_number','like','%'.Request::get('roll_number').'%');
-                        }
-
-                        if (!empty(Request::get('class_name')))
-                        {
-                              $return =  $return->where('class_name','like','%'.Request::get('class_name').'%');
-                        }
-
-
-        $return =  $return->orderBy('users.id','desc')
-                        ->paginate(2);
-        return $return;
-
-
-    }
-
-    static public function getTeacherClass()
-    {
-        $return = self::select('users.*')
-            ->where('users.user_type', '=', 2)
-            ->where('users.is_delete', 0)
-            ->orderBy('users.id', 'desc')
-            ->get();
-    
-        return $return;
-    }
+   
 
     
 

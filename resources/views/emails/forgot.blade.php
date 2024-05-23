@@ -9,7 +9,7 @@ Reset Your Password
 <p>In case you have any issues recovering your password, please contact us. </p>
 
 Thanks,<br>
-
-{{ config('app.name') }}
+Cresmanagehub
+<!-- {{ config('app.name') }} -->
 
 @endcomponent

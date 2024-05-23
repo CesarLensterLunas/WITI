@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Mail\ForgotPasswordMail;
 use Mail;
 use Str;
+use App\Notifications\UserLogin;
 
 class AuthController extends Controller
 {
@@ -18,14 +19,25 @@ class AuthController extends Controller
        if(!empty(Auth::check())){
         
             if(Auth::user()->user_type == 1){
+                // $user=Auth::user();
+                // $message = 'my awesome message';
+                // $user->notify(new UserLogin($message));
                 return redirect('admin/dashboard');
             }
             elseif(Auth::user()->user_type == 2)
             {
+                // $user=Auth::user();
+                // $message = 'my awesome message';
+                // $user->notify(new UserLogin($message));
+                
                 return redirect('teacher/dashboard');
             }
             elseif(Auth::user()->user_type == 3)
             {
+                // $user=Auth::user();
+                // $message = 'my awesome message';
+                // $user->notify(new UserLogin($message));
+                
                 return redirect('student/dashboard');
             }
             elseif(Auth::user()->user_type == 4)
@@ -44,21 +56,24 @@ class AuthController extends Controller
         if (Auth::attempt(['email'=> $request->email, 'password'=> $request->password], $remember))
         {
             if(Auth::user()->user_type == 1)
+
             {
+                $user=Auth::user();
                 return redirect('admin/dashboard');
             }
             elseif(Auth::user()->user_type == 2)
             {
+                $user=Auth::user();
                 return redirect('teacher/dashboard');
             }
             elseif(Auth::user()->user_type == 3)
             {
+                $user=Auth::user();
+                // $message = 'my awesome message';
+                // $user->notify(new UserLogin($message));
                 return redirect('student/dashboard');
             }
-            elseif(Auth::user()->user_type == 4)
-            {
-                return redirect('parent/dashboard');
-            }
+           
 
 
             
@@ -82,7 +97,9 @@ class AuthController extends Controller
         $user->remember_token=Str::random(30);
         $user->save();
         Mail::to($user->email)->send(new ForgotPasswordMail($user));
+
         return redirect()->back()->with('success', "Please check your email and reset your password");
+        
            }
        else{
         return redirect()->back()->with('error', "Email not found in the system.");
@@ -93,7 +110,7 @@ class AuthController extends Controller
     public function reset($remember_token)
     {
       
-       $user=  User::getTokenSingle($remember_token);
+       $user =  User::getTokenSingle($remember_token);
        if(!empty($user))
        {
             $data['user'] = $user;
@@ -104,17 +121,19 @@ class AuthController extends Controller
        }
 
     }
-    public function PostReset($token, request $request)
+    
+    public function PostReset($token, Request $request)
     {
          if ($request->password == $request->cpassword)
          {
-        $user = User::getTokenSingle($remember_token);
+        $user = User::getTokenSingle($token);
         $user->password = Hash::make($request->password);
         $user->remember_token=Str::random(30);
-        $user->saved();
+        $user->save();
+
     
-        return redirect(url(''))->with('success', "Password successfully reset");
-        }
+        return redirect(url('/login'))->with('success', "Password successfully reset");
+    }
         else
         {
             return redirect()->back()->with('error', "Password and confirm password does not match");

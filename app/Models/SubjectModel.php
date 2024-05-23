@@ -16,6 +16,16 @@ class SubjectModel extends Model
     {
         return self::find($id);
     }
+    static public function getTeacherClass()
+    {
+        $return = self::select('usersteacher.*')
+            ->where('usersteacher.user_type', '=', 2)
+            ->where('usersteacher.is_delete', 0)
+            ->orderBy('usersteacher.id', 'desc')
+            ->get();
+    
+        return $return;
+    }
 
     static public function getRecord()
     {

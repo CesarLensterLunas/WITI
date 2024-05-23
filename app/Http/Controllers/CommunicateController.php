@@ -8,7 +8,7 @@ use App\Models\User;
 use App\Models\NoticeBoardModel; 
 use App\Models\NoticeBoardMessageModel;
 use Auth;
-
+use App\Notifications\UserLogin;
 class CommunicateController extends Controller
 {
     public function NoticeBoard()
@@ -17,6 +17,8 @@ class CommunicateController extends Controller
         $data['header_title'] = 'Notice Board'; // Added "=" to assign the value
         return view('admin.communicate.noticeboard.list', $data); // Corrected spelling of "view"
     }
+
+
 
     public function AddNoticeBoard()
 {
@@ -44,7 +46,9 @@ public function InsertNoticeBoard(Request $request)
             $message->save();
         }
     }
-    
+    // $user=Auth::user();
+    //             $message = 'my awesome message';
+    //             $user->notify(new UserLogin($message));
 
     // Redirect the user back to the notice board page with a success message
     return redirect('admin/communicate/notice_board')->with('success', "Notice Board successfully created");
@@ -96,7 +100,12 @@ public function MyNoticeBoardStudent()
     $data['header_title'] = 'My Notice Board';
     return view('student.my_notice_board', $data);
 }
-
+public function MyNoticeBoardTeacher()
+{
+    $data['getRecord']=NoticeBoardModel::getRecordUser(Auth::user()->user_type);
+    $data['header_title'] = 'My Notice Board';
+    return view('teacher.my_notice_board', $data);
+}
 
     }
 

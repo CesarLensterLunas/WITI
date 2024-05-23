@@ -40,6 +40,16 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+    
+        'teacher' => [
+            'driver' => 'session',
+            'provider' => 'usersteacher',
+        ],
+    
+        'student' => [
+            'driver' => 'session',
+            'provider' => 'usersstudent',
+        ],
     ],
 
     /*
@@ -65,11 +75,22 @@ return [
             'model' => App\Models\User::class,
         ],
 
+        'usersteacher' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\UserTeacher::class,
+        ],
+    
+        'usersstudent' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\UserStudent::class,
+        ],
+        // Define other providers if needed...
+    ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',
         // ],
-    ],
+   
 
     /*
     |--------------------------------------------------------------------------

@@ -143,7 +143,7 @@
                             <a class="nav-link" href="#">Request</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Admissions</a>
+                            <a class="nav-link" href="{{ url('admin/student/add') }}">Admissions</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('login') }}">Login</a>

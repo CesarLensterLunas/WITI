@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1> My Account </h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -21,7 +21,7 @@
           <!-- left column -->
           <div class="col-md-12">
             @include('_message')
-            
+
 
             <!-- general form elements -->
             <div class="card card-primary">
@@ -40,9 +40,16 @@
                   <div class="form-group">
                     <label >Email</label>
                     <input type="email" class="form-control" name="email"value="{{ old('email',$getRecord->email)}}"Required placeholder="Enter email">
-                    <div style="color:red">{{ $errors->first('email')}}</div> 
+                    <div style="color:red">{{ $errors->first('email')}}</div>
                 </div>
- 
+                <div class="form-group col-md-6">
+                    <label>Profile Pic <span style="color: red;"></span></label>
+                    <input type="file" class="form-control" name="profile_pic">
+                    <div style="color:red">{{ $errors->first('profile_pic')}}</div>
+                     @if(!empty($getRecord->getProfile()))
+                    <img src="{{ $getRecord->getProfile() }}" style="width: 100px;">
+                     @endif
+                </div>
 
                 <div class="card-footer">
                   <button type="submit" class="btn btn-primary">Update</button>
@@ -51,11 +58,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -64,4 +71,4 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+@endsection

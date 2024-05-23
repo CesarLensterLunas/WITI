@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ClassModel;
+use App\Models\Usersteacher;
 use App\Models\User;
 use App\Models\AssignClassTeacherModel;
 use Illuminate\Support\Facades\Auth;
@@ -20,7 +21,7 @@ class AssignClassTeacherController extends Controller
     public function add(Request $request)
     {
         $data['getClass'] = ClassModel::getClass();
-        $data['getTeacher'] = User::getTeacherClass();
+        $data['getTeacher'] = Usersteacher::getTeacherClass();
         $data['header_title'] = "Add Assign Class Teacher";
         return view('admin.assign_class_teacher.add', $data);
     }
@@ -59,7 +60,7 @@ class AssignClassTeacherController extends Controller
             $data['getRecord'] = $getRecord;
             $data['getAssignTeacherID'] = AssignClassTeacherModel::getAssignTeacherID($getRecord->class_id);
             $data['getClass'] = ClassModel::getClass();
-            $data['getTeacher'] = User::getTeacherClass();
+            $data['getTeacher'] = Usersteacher::getTeacherClass();
             $data['header_title'] = "Edit Assign Class Teacher";
             return view('admin.assign_class_teacher.edit', $data);
         } 
@@ -104,7 +105,7 @@ public function edit_single($id)
     if(!empty($getRecord)) {
         $data['getRecord'] = $getRecord;
         $data['getClass'] = ClassModel::getClass();
-        $data['getTeacher'] = User::getTeacherClass();
+        $data['getTeacher'] = Usersteacher::getTeacherClass();
         $data['header_title'] = "Edit Assign Class Teacher";
         
         return view('admin.assign_class_teacher.edit_single', $data);

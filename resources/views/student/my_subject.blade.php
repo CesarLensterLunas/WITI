@@ -37,23 +37,88 @@
                 <table class="table table-striped">
                   <thead>
                     <tr>
-                     
+                     <th>Subject Code</th>
+                    
                       <th>Subject Name</th>
-                      <th>Subject Type</th>
+                      
+                      <th>Schedule</th>
+                      <th>Units</th>
+                      <th>Teacher</th>
+                     
                       
                     </tr>
                    
                   </thead>
                   <tbody>
-                    @foreach ($getRecord as $value)
-                    <tr>
-                      <td> {{ $value->subject_name}}</td>
-                      <td> {{ $value->subject_type}}</td>
+                  <tbody>
+    @foreach ($getRecord as $value)
+        <tr>
+            <td>{{ $value->subject_code }}</td>
+            <td>{{ $value->subject_name }}</td>
+            <!-- Placeholder for schedule -->
+            <td>Monday 9:00 AM - 11:00 AM</td>
+            <td>{{ $value->units }}</td>
+        </tr>
+    @endforeach
 
-                      </tr>
- 
-                      @endforeach
+    <!-- Additional subjects with placeholder schedules -->
+
+    
+    <tr>
+        <td>COMP101</td>
+        <td>Introduction to Computer Science</td>
+        <td>Tuesday 1:00 PM - 3:00 PM</td>
+        <td>3</td>
+        <td>Dr. Smith</td>
+    </tr>
+    <tr>
+        <td>MATH201</td>
+        <td>Calculus I</td>
+        <td>Wednesday 10:00 AM - 12:00 PM</td>
+        <td>4</td>
+        <td>Mrs. Lee</td>
+        
+    
+    </tr>
+    <tr>
+        <td>PHYS101</td>
+        <td>Physics Fundamentals</td>
+        <td>Thursday 2:00 PM - 4:00 PM</td>
+        <td>3</td>
+        <td>Ms. Natividad</td>
+        
+    </tr>
+    <tr>
+        <td>ENG101</td>
+        <td>English Composition</td>
+        <td>Friday 9:00 AM - 11:00 AM</td>
+        <td>3</td>
+        <td>Mrs. Gonzalez</td>
+        
+    </tr>
+    <tr>
+        <td>HIST101</td>
+        <td>World History</td>
+        <td>Monday 2:00 PM - 4:00 PM</td>
+        <td>3</td>
+        <td>Ms. Flores</td>
+        
+    </tr>
+    <tr>
+        <td>BIO101</td>
+        <td>Introduction to Biology</td>
+        <td>Tuesday 10:00 AM - 12:00 PM</td>
+        <td>4</td>
+        <td>Mr. Martinez</td>
+  
+        
+    </tr>
+   
 </tbody>
+
+</tbody>
+
+
 
   
                 </table>

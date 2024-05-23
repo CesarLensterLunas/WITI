@@ -25,10 +25,8 @@
   <link rel="stylesheet" href="{{ url('public/plugins/daterangepicker/daterangepicker.css') }}">
   <!-- summernote -->
   <link rel="stylesheet" href="{{ url('public/plugins/summernote/summernote-bs4.min.css') }}">
-
-  
- <link rel="stylesheet" href="{{ url('public/plugins/fullcalendar/main.css') }}">
- 
+  <link rel="stylesheet" href="{{ url('public/plugins/fullcalendar/main.css') }}">
+  @yield('style')
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
 <div class="wrapper">
@@ -43,6 +41,7 @@
 
 </div>
 <!-- ./wrapper -->
+ <!-- Google Font: Source Sans Pro -->
 
 <!-- jQuery -->
 <script src="{{ url('public/plugins/jquery/jquery.min.js') }}"></script>
@@ -75,7 +74,7 @@
 <!-- AdminLTE App -->
 <script src="{{ url('public/dist/js/adminlte.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{ url('public/dist/js/demo.js') }}"></script>
+{{-- <script src="{{ url('public/dist/js/demo.js') }}"></script> --}}
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="{{ url('public/dist/js/pages/dashboard.js') }}"></script>
 

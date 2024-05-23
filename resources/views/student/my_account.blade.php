@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1> My Account</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -20,7 +20,7 @@
         <div class="row">
           <!-- left column -->
           <div class="col-md-12">
-            @include('_message');
+            @include('_message')
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
@@ -33,38 +33,32 @@
                 <div class="card-body">
                     <div class=row>
                     <div class="form-group col-md-6">
-                    <label >First Name <span style="color: red;">*</span></label>
-                    <input type="Text" class="form-control" value="{{ old('name', $getRecord->name) }}" name="name" Required placeholder="First Name">
-                    <div style="color:red">{{ $errors->first('name')}}</div>
-                  </div>
+    <label>First Name <span style="color: red;">*</span></label>
+    <input type="text" class="form-control" value="{{ old('name', $getRecord->name) }}" name="name" disabled placeholder="First Name">
+    <div style="color:red">{{ $errors->first('name')}}</div>
+</div>
+<div class="form-group col-md-6">
+    <label>Last Name <span style="color: red;">*</span></label>
+    <input type="text" class="form-control" value="{{ old('last_name', $getRecord->last_name)}}" name="last_name" disabled placeholder="Last Name">
+    <div style="color:red">{{ $errors->first('last_name')}}</div>
+</div>
 
-                  <div class="form-group col-md-6">
-                    <label >Last Name <span style="color: red;">*</span></label>
-                    <input type="Text" class="form-control" value="{{ old('last_name', $getRecord->last_name)}}" name="last_name" Required placeholder="Last Name">
-                    <div style="color:red">{{ $errors->first('last_name')}}</div>
-                  </div>
-                  
-                   
-                    
- 
-                   
-                  
-                    <div class="form-group col-md-6">
-                        <label>Gender <span style="color: red;">*</span></label>
-                        <select class="form-control" required name="gender">
-                            <option {{ (old('gender', $getRecord->gender) == 'Male') ? 'selected' : ''}} value="Male">Male</option>
-                            <option  {{ (old('gender', $getRecord->gender) == 'Femaale') ? 'selected' : ''}} value="Female">Female</option>
-                            <option  {{ (old('gender', $getRecord->gender) == 'Other') ? 'selected' : ''}} value="Other">Other</option>
-                        </select>
-                        <div style="color:red">{{ $errors->first('gender')}}</div>
+<div class="form-group col-md-6">
+    <label>Gender <span style="color: red;">*</span></label>
+    <select class="form-control" required name="gender" disabled>
+        <option {{ (old('gender', $getRecord->gender) == 'Male') ? 'selected' : ''}} value="Male">Male</option>
+        <option {{ (old('gender', $getRecord->gender) == 'Female') ? 'selected' : ''}} value="Female">Female</option>
+        <option {{ (old('gender', $getRecord->gender) == 'Other') ? 'selected' : ''}} value="Other">Other</option>
+    </select>
+    <div style="color:red">{{ $errors->first('gender')}}</div>
+</div>
 
-                    </div>
-                    <div class="form-group col-md-6">
-                        <label>Date of Birth <span style="color: red;">*</span></label>
-                        <input type="date" class="form-control" required value="{{ old('date_of_birth', $getRecord->date_of_birth) }}" name="date_of_birth">
-                        <div style="color:red">{{ $errors->first('date_of_birth')}}</div>
+<div class="form-group col-md-6">
+    <label>Date of Birth <span style="color: red;">*</span></label>
+    <input type="date" class="form-control" required value="{{ old('date_of_birth', $getRecord->date_of_birth) }}" name="date_of_birth" disabled>
+    <div style="color:red">{{ $errors->first('date_of_birth')}}</div>
+</div>
 
-                    </div>
                     <div class="form-group col-md-6">
 
                     <label>Mobile Number <span style="color: red;"></span></label>
@@ -73,7 +67,7 @@
 
                   </div>
 
-                 
+
 
                 <div class="form-group col-md-6">
                     <label>Profile Pic <span style="color: red;"></span></label>
@@ -86,11 +80,21 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Blood Group <span style="color: red;"></span></label>
-                    <input type="text" class="form-control" name="blood_group" value="{{ old('blood_group', $getRecord->blood_group) }}" placeholder="Blood Group">
+                    <label>Blood Type <span style="color: red;"></span></label>
+                    <select class="form-control" name="blood_group">
+                        <option value="">Select Blood Group</option>
+                        <option value="A+" @if(old('blood_group', $getRecord->blood_group) == 'A+') selected @endif>A+</option>
+                        <option value="A-" @if(old('blood_group', $getRecord->blood_group) == 'A-') selected @endif>A-</option>
+                        <option value="B+" @if(old('blood_group', $getRecord->blood_group) == 'B+') selected @endif>B+</option>
+                        <option value="B-" @if(old('blood_group', $getRecord->blood_group) == 'B-') selected @endif>B-</option>
+                        <option value="AB+" @if(old('blood_group', $getRecord->blood_group) == 'AB+') selected @endif>AB+</option>
+                        <option value="AB-" @if(old('blood_group', $getRecord->blood_group) == 'AB-') selected @endif>AB-</option>
+                        <option value="O+" @if(old('blood_group', $getRecord->blood_group) == 'O+') selected @endif>O+</option>
+                        <option value="O-" @if(old('blood_group', $getRecord->blood_group) == 'O-') selected @endif>O-</option>
+                    </select>
                     <div style="color:red">{{ $errors->first('blood_group')}}</div>
+                </div>
 
-                  </div>
 
                 <div class="form-group col-md-6">
                     <label>Height <span style="color: red;"></span></label>
@@ -106,18 +110,18 @@
 
                 </div>
 
-              
+
 
 
                     </div>
 <hr />
-                
+
                   <div class="form-group">
                     <label >Email<span style="color: red;">*</span></label>
                     <input type="email" class="form-control" value="{{ old('email', $getRecord->email)}}" name="email" Required placeholder="Enter email">
                     <div style="color:red">{{ $errors->first('email')}}</div>
-                 
-                  
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -128,11 +132,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -141,4 +145,4 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+@endsection

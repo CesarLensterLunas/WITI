@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1> Edit Admin </h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -34,18 +34,29 @@
                     <label >Name</label>
                     <input type="Text" class="form-control" name="name" value="{{ old('name',$getRecord->name) }}" Required placeholder="Name">
                   </div>
+                  <div class="form-group col-md-6">
+                    <label >Last Name <span style="color: red;">*</span></label>
+                    <input type="Text" class="form-control" value="{{ old('last_name', $getRecord->last_name)}}" name="last_name" Required placeholder="Last Name">
+                    <div style="color:red">{{ $errors->first('last_name')}}</div>
+                  </div>
+                  <div class="form-group col-md-6">
+                    <label>Profile Pic <span style="color: red;"></span></label>
+                    <input type="file" class="form-control" name="profile_pic">
+                    <div style="color:red">{{ $errors->first('profile_pic') }}</div>
+                    @if(!empty($getRecord->getProfile()))
+                    <img src="{{ $getRecord->getProfile() }}" style="width: auto; height: 50px;">
+                    @endif
+                </div>
+
+
                   <div class="form-group">
                     <label >Email</label>
                     <input type="email" class="form-control" name="email"value="{{ old('email',$getRecord->email)}}"Required placeholder="Enter email">
-                    <div style="color:red">{{ $errors->first('email')}}</div> 
+                    <div style="color:red">{{ $errors->first('email')}}</div>
                 </div>
 
-                  <div class="form-group">
-                    <label >Password</label>
-                    <input type="text" class="form-control"  name="password"  placeholder="Password">
-                    <p>Add New Password
-                  </div>
-                  
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -56,11 +67,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -69,4 +80,4 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+@endsection

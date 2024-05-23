@@ -1,15 +1,43 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ !empty($header_title) ? $header_title :''}} - Cresmanage Hub </title>
 
-@section('content')
+  <!-- Google Font: Source Sans Pro -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="{{ url('public/plugins/fontawesome-free/css/all.min.css') }}">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Tempusdominus Bootstrap 4 -->
+  <link rel="stylesheet" href="{{ url('public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css') }}">
+  <!-- iCheck -->
+  <link rel="stylesheet" href="{{ url('public/plugins/icheck-bootstrap/icheck-bootstrap.min.css') }}">
+  <!-- JQVMap -->
+  <link rel="stylesheet" href="{{ url('public/plugins/jqvmap/jqvmap.min.css') }}">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="{{ url('public/dist/css/adminlte.min.css') }}">
+  <!-- overlayScrollbars -->
+  <link rel="stylesheet" href="{{ url('public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') }}">
+  <!-- Daterange picker -->
+  <link rel="stylesheet" href="{{ url('public/plugins/daterangepicker/daterangepicker.css') }}">
+  <!-- summernote -->
+  <link rel="stylesheet" href="{{ url('public/plugins/summernote/summernote-bs4.min.css') }}">\
+  <link rel="stylesheet" href="{{ url('public/plugins/fullcalendar/main.css') }}">
+
+</head>
+<body>
+
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Add New Student</h1>
+        <div class="row mb-10">
+
           </div>
-          
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -23,7 +51,7 @@
             <!-- general form elements -->
             <div class="card card-primary">
               <div class="card-header">
-                <h3 class="card-title">Quick Example</h3>
+                <h3 class="card-title">Add Student</h3>
               </div>
               <!-- /.card-header -->
               <!-- form start -->
@@ -42,33 +70,11 @@
                     <input type="Text" class="form-control" value="{{ old('last_name')}}" name="last_name" Required placeholder="Last Name">
                     <div style="color:red">{{ $errors->first('last_name')}}</div>
                   </div>
-                  
-                  <div class="form-group col-md-6">
-                    <label >Admission Number <span style="color: red;">*</span></label>
-                    <input type="Text" class="form-control" value="{{ old('admission_number')}}" name="admission_number"  placeholder="Admission Number">
-                    <div style="color:red">{{ $errors->first('admission_number')}}</div>
-                  </div>
-                    
 
-                    <div class="form-group col-md-6">
-                    <label >Roll Number <span style="color: red;">*</span></label>
-                    <input type="Text" class="form-control" value="{{ old('roll_number')}}" name="roll_number" Required placeholder="Roll Number">
-                    <div style="color:red">{{ $errors->first('roll_number')}}</div>
 
-                  </div>
-                   
-                   
-                  <div class="form-group col-md-6">
-                    <label>Class <span style="color: red;">*</span></label>
-                    <select class="form-control" required name="class_id">
-                        <option value="">Select Class</option>
-                        @foreach($getClass as $value)
-                            <option  {{ (old('class_id') == $value->id ) ? 'selected' : ''}} value="{{ $value->id }}">{{ $value->name }}</option>
-                        @endforeach
-                    </select>
-                    <div style="color:red">{{ $errors->first(' class_id')}}</div>
 
-                </div>
+
+
 
 
                     <div class="form-group col-md-6">
@@ -76,7 +82,7 @@
                         <select class="form-control" required name="gender">
                             <option {{ (old('gender') == 'Male') ? 'selected' : ''}} value="Male">Male</option>
                             <option  {{ (old('gender') == 'Femaale') ? 'selected' : ''}} value="Female">Female</option>
-                            <option  {{ (old('gender') == 'Other') ? 'selected' : ''}} value="Other">Other</option>
+
                         </select>
                         <div style="color:red">{{ $errors->first('gender')}}</div>
 
@@ -88,12 +94,11 @@
 
                     </div>
                     <div class="form-group col-md-6">
+    <label>Mobile Number <span style="color: red;">*</span></label>
+    <input type="text" class="form-control" value="{{ old('mobile_number') }}" name="mobile_number" placeholder="Mobile Number">
+    <div style="color:red">{{ $errors->first('mobile_number')}}</div>
+</div>
 
-                    <label>Mobile Number <span style="color: red;"></span></label>
-                    <input type="text" class="form-control" value="{{ old('mobile_number') }}" name="mobile_number" placeholder="Mobile Number">
-                    <div style="color:red">{{ $errors->first('mobile_number')}}</div>
-
-                  </div>
 
                 <div class="form-group col-md-6">
                     <label>Admission Date <span style="color: red;">*</span></label>
@@ -110,11 +115,28 @@
                 </div>
 
                 <div class="form-group col-md-6">
-                    <label>Blood Group <span style="color: red;"></span></label>
-                    <input type="text" class="form-control" name="blood_group" value="{{ old('blood_group') }}" placeholder="Blood Group">
-                    <div style="color:red">{{ $errors->first('blood_group')}}</div>
+                    <div class="form-group col-md-6">
+                        <label>Blood Type <span style="color: red;"></span></label>
+                        <select class="form-control" name="blood_group">
+                            <option value="">Select Blood Type</option>
+                            <option value="A" {{ (old('blood_group') == 'A') ? 'selected' : '' }}>A</option>
+                            <option value="B" {{ (old('blood_group') == 'B') ? 'selected' : '' }}>B</option>
+                            <option value="AB" {{ (old('blood_group') == 'AB') ? 'selected' : '' }}>AB</option>
+                            <option value="O" {{ (old('blood_group') == 'O') ? 'selected' : '' }}>O</option>
+                            <option value="A+" {{ (old('blood_group') == 'A+') ? 'selected' : '' }}>A+</option>
+                            <option value="A-" {{ (old('blood_group') == 'A-') ? 'selected' : '' }}>A-</option>
+                            <option value="B+" {{ (old('blood_group') == 'B+') ? 'selected' : '' }}>B+</option>
+                            <option value="B-" {{ (old('blood_group') == 'B-') ? 'selected' : '' }}>B-</option>
+                            <option value="AB+" {{ (old('blood_group') == 'AB+') ? 'selected' : '' }}>AB+</option>
+                            <option value="AB-" {{ (old('blood_group') == 'AB-') ? 'selected' : '' }}>AB-</option>
+                            <option value="O+" {{ (old('blood_group') == 'O+') ? 'selected' : '' }}>O+</option>
+                            <option value="O-" {{ (old('blood_group') == 'O-') ? 'selected' : '' }}>O-</option>
+                        </select>
+                        <div style="color:red">{{ $errors->first('blood_group') }}</div>
+                    </div>
+    <div style="color:red">{{ $errors->first('blood_group')}}</div>
+</div>
 
-                  </div>
 
                 <div class="form-group col-md-6">
                     <label>Height <span style="color: red;"></span></label>
@@ -129,34 +151,13 @@
                     <div style="color:red">{{ $errors->first('weight')}}</div>
 
                 </div>
-
-                <div class="form-group col-md-6">
-                    <label>Status <span style="color: red;">*</span></label>
-                    <select class="form-control" required name="status">
-                        <option value="">Select Status</option>
-                        <option {{ (old('status') == 0) ? 'selected' : ''}} value="0">Active</option>
-                        <option {{ (old('status') == 1) ? 'selected' : ''}} value="1">Inactive</option>
-                    </select>
-                    <div style="color:red">{{ $errors->first('status')}}</div>
-
-                </div>
-
-
-
-
-                    </div>
-<hr />
-                
-                  <div class="form-group">
+                  <div class="form-group col-md-6" >
                     <label >Email<span style="color: red;">*</span></label>
                     <input type="email" class="form-control" value="{{ old('email')}}" name="email" Required placeholder="Enter email">
                     <div style="color:red">{{ $errors->first('email')}}</div>
                   </div>
-                  <div class="form-group">
-                    <label >Password<span style="color: red;">*</span></label>
-                    <input type="password" class="form-control"  name="password" Required placeholder="Password">
-                  </div>
-                  
+
+
                 </div>
                 <!-- /.card-body -->
 
@@ -167,11 +168,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -180,4 +181,13 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+
+</body>
+  <footer class="main-footer">
+    <strong>Copyright &copy; {{ date('Y')}}</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 3.2.0
+    </div>
+  </footer>
+

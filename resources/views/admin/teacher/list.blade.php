@@ -63,18 +63,18 @@
                                         <label>Status</label>
                                         <select class="form-control" name="status">
                                             <option value="">Select Status</option>
-                                            <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
+                                            <option {{ (Request::get('status') == 0) ? 'selected' : '' }} value="0">Active</option>
                                             <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
                                         </select>
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    {{-- <div class="form-group col-md-2">
                                         <label>Date Of Joining</label>
                                         <input type="date" class="form-control" name="admission_date" value="{{ Request::get('admission_date') }}">
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label>Created Date</label>
                                         <input type="date" class="form-control" name="date" value="{{ Request::get('date') }}" placeholder="">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group col-md-3">
                                         <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
                                         <a href="{{ url('admin/teacher/list') }}" class="btn btn-success" style="margin-top: 30px;">Reset</a>
@@ -117,9 +117,9 @@
                                     <tr>
                                         <td>{{ $value->id }}</td>
                                         <td>
-                                            @if(!empty($value->getProfile()))
-                                            <img src="{{ $value->getProfile() }}" style="height: 50px; width: 50px; border-radius: 50px;">
-                                            @endif
+                                        @if(!empty($value->getProfile()))
+                      <img src="{{ $value->getProfile() }}" style="height: 50px; width:50px; border-radius: 50px;">
+                      @endif
                                         </td>
                                         <td>{{ $value->name }} {{ $value->last_name }}</td>
                                         <td>{{ $value->email }}</td>
@@ -145,7 +145,21 @@
                                         <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                         <td style="min-width: 150px;">
                                             <a href="{{ url('admin/teacher/edit/'.$value->id) }}" class="btn btn-primary btn-sm">Edit</a>
-                                            <a href="{{ url('admin/teacher/delete/'.$value->id) }}" class="btn btn-danger btn-sm">Delete</a>
+
+
+                                            <a href="#" onclick="confirmDelete('{{ url('admin/teacher/delete/'.$value->id) }}')" class="btn btn-danger">Delete</a>
+
+                                    <script>
+                                        function confirmDelete(deleteUrl) {
+                                            if (confirm("Are you sure you want to delete this teacher?")) {
+                                                // If user confirms deletion, proceed with the deletion action
+                                                window.location.href = deleteUrl;
+                                            } else {
+                                                // If user cancels, do nothing
+                                                return false;
+                                            }
+                                        }
+                                    </script>
                                         </td>
                                     </tr>
                                     @endforeach
