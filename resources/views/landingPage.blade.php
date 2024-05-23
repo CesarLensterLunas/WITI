@@ -29,13 +29,13 @@
             background-color: #000076;
         }
         .jumbotron {
-            
+
             background-color: white;
             padding: 2rem 1rem;
             margin-bottom: -30px;
             color: #000076;
-            
-            
+
+
         }
         .jumbotron-heading {
             Text-align: left;
@@ -129,7 +129,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">Cresmanage Hub</a>
-                
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -218,7 +218,7 @@
                     </div>
                     <div class="col-md-4">
                     <img src="{{ url('\upload\profile\logo.webp') }}" alt="Image 3">
-                        
+
                     </div>
                     <div class="col-md-4">
                     <img src="{{ url('\upload\profile\college.webp') }}" alt="Image 2">

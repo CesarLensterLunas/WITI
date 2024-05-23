@@ -10,6 +10,8 @@
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",
+        "laravel/ui": "4.2.2",
+        "opcodesio/log-viewer": "^3.10",
         "rappasoft/laravel-authentication-log": "^4.0",
         "torann/geoip": "^3.0"
     },
@@ -17,6 +19,7 @@
         "fakerphp/faker": "^1.9.1",
         "laravel/pint": "^1.0",
         "laravel/sail": "^1.18",
+        "laraveldaily/larastarters": "^2.3",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^7.0",
         "phpunit/phpunit": "^10.1",
