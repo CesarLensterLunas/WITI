@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Add New Class</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -28,13 +28,13 @@
                     <label>Class Name</label>
                     <input type="text" class="form-control"  name="name" required placeholder="Class Name">
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
                     <option value="0">Active</option>
                     <option value="1">Inactive</option>
-                </select>
-                  
+                </select> --}}
+
                 </div>
                 <!-- /.card-body -->
 
@@ -45,11 +45,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -58,4 +58,4 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+@endsection

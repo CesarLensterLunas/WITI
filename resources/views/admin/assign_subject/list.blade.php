@@ -64,7 +64,7 @@
                                 <th>#</th>
                                 <th>Class Name</th>
                                 <th>Subject Name</th>
-                                <th>Status</th>
+                                {{-- <th>Status</th> --}}
                                 <th>Created By</th>
                                 <th>Created Date</th>
                                 <th>Action</th>
@@ -76,13 +76,13 @@
                                 <td>{{ $value->id }}</td>
                                 <td>{{ $value->class_name }}</td>
                                 <td>{{ $value->subject_name }}</td>
-                                <td>
+                                {{-- <td>
                                     @if($value->status == 0)
                                     Active
                                     @else
                                     Inactive
                                     @endif
-                                </td>
+                                </td> --}}
                                 <td>{{ $value->created_by_name }}</td>
                                 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
                                 <td>

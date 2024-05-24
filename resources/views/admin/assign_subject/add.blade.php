@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Add New Assign Subject</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -34,7 +34,7 @@
                     @endforeach
                 </select>
 
-                
+
 <div class="form-group">
 <label>Subject Name</label>
 @foreach($getSubject as $subject)
@@ -46,13 +46,13 @@
 @endforeach
 
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label>Status</label>
                 <select class="form-control" name="status">
                     <option value="0">Active</option>
                     <option value="1">Inactive</option>
-                </select>
-                  
+                </select> --}}
+
                 </div>
                 <!-- /.card-body -->
 
@@ -63,11 +63,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

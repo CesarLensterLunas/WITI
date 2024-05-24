@@ -37,15 +37,15 @@
                                 <label>Teacher Name</label>
                                 <input type="text" class="form-control" value="{{ Request::get('teacher_name')}}" name="teacher_name" placeholder="Teacher Name">
                             </div>
-                            <div class="form-group col-md-2">
+                            {{-- <div class="form-group col-md-2">
                                <label>Status</label>
                                <select class="form-control" name="status">
                                <option value="">Select</option>
                                <option {{ (Request::get('status') == 100) ? 'selected' : '' }} value="100">Active</option>
                                 <option {{ (Request::get('status') == 1) ? 'selected' : '' }} value="1">Inactive</option>
                                  </select>
-                                  </div>
-    
+                                  </div> --}}
+
                             <div class="form-group col-md-3">
                                 <label>Date</label>
                                 <input type="date" class="form-control" name="date" value="{{ Request::get('date')}} ">

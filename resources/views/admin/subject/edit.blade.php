@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Edit Subject</h1>
           </div>
-         
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,24 +31,24 @@
 
                   <div class="form-group">
                     <label>Subject type</label>
-                   
+
                     <select class="form-control" name="type" required>
                     <option value="">Select Type</option>
                     <option  {{ ($getRecord->type=='Theory')?'selected' :''}} value="Theory">Theory </option>
                     <option  {{ ($getRecord->type=='Practical')?'selected' :''}} value="Practical">Practical</option>
-                   
+
                 </select>
-                 
+
                 </div>
 
-
+{{--
                   <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
                     <option {{ ($getRecord->status=='0')?'selected' :''}}value="0">Active</option>
                     <option {{ ($getRecord->status=='1')?'selected' :''}}value="1">Inactive</option>
-                </select>
-                 
+                </select> --}}
+
                 </div>
                 <!-- /.card-body -->
 
@@ -59,11 +59,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -72,5 +72,5 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+@endsection
 

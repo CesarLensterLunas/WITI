@@ -185,11 +185,11 @@
                                             placeholder="Enter email">
                                         <div style="color:red">{{ $errors->first('email') }}</div>
                                     </div>
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label>Password<span style="color: red;">*</span></label>
                                         <input type="text" class="form-control" name="password"
                                             placeholder="Password">
-                                    </div>
+                                    </div> --}}
 
                                 </div>
                                 <!-- /.card-body -->

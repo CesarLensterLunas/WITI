@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Edit Assign Subject</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -35,14 +35,14 @@
                     @endforeach
                 </select>
 
-                
+
 <div class="form-group">
 <label>Subject Name</label>
 @foreach($getSubject as $subject)
-   @php 
+   @php
    $checked = "";
    @endphp
-   @foreach($getAssignSubjectID as $subjectAssign) 
+   @foreach($getAssignSubjectID as $subjectAssign)
    @if($subjectAssign->subject_id == $subject->id)
 @php
 $checked = "checked";
@@ -57,13 +57,13 @@ $checked = "checked";
 @endforeach
 
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label>Status</label>
                 <select class="form-control" name="status">
                     <option {{($getRecord->status==0) ? 'selected':''}} value="0">Active</option>
                     <option {{($getRecord->status==1) ? 'selected':''}}value="1">Inactive</option>
-                </select>
-                  
+                </select> --}}
+
                 </div>
                 <!-- /.card-body -->
 
@@ -74,11 +74,11 @@ $checked = "checked";
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

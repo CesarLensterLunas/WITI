@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Add New Assign Class Teacher</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -33,7 +33,7 @@
                     <option value="{{ $class->id }}">{{ $class->name }}</option>
                     @endforeach
                 </select>
-                
+
                 <div class="form-group">
                   <label>Teacher Name</label>
                 @foreach($getTeacher as $teacher)
@@ -43,15 +43,15 @@
             </label>
              </div>
          @endforeach
-    
+
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label>Status</label>
                 <select class="form-control" name="status">
                     <option value="0">Active</option>
                     <option value="1">Inactive</option>
-                </select>
-                  
+                </select> --}}
+
                 </div>
                 <!-- /.card-body -->
 
@@ -62,11 +62,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->

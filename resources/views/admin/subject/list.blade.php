@@ -14,14 +14,14 @@
            <a href="{{ url('admin/subject/add') }}" class="btn btn-primary">Add New Subject</a>
           </div>
 
-         
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-   
+
           <!-- /.col -->
           <div class="col-md-12">
 
@@ -39,10 +39,10 @@
                     <label>Name</label>
                     <input type="text" class="form-control" value="{{ Request::get('name')}}" name="name"  placeholder="Name">
                   </div>
-               
+
                   <div class="form-group col-md-3">
                     <label>Date</label>
-                    <input type="date" class="form-control" name="date" value="{{ Request::get('date')}}"  placeholder="email">  
+                    <input type="date" class="form-control" name="date" value="{{ Request::get('date')}}"  placeholder="email">
                   </div>
                   <div class="form-group col-md-3">
                      <button class="btn btn-primary" type="submit" style="margin-top: 30px;">Search</button>
@@ -51,7 +51,7 @@
                 </div>
               </form>
             </div>
-             
+
             <!-- /.cardSADASDASDASDASDSDASDASDASDKJHQW  OI;HDE OUQWHUDOHQOUWHDAUHSDIKUAHSDILUAHSDIOUAS -->
             @include('_message')
 
@@ -66,33 +66,33 @@
                     <tr>
                       <th >#</th>
                       <th>Subject Name</th>
-                      <th>Status</th>
+                      {{-- <th>Status</th> --}}
                       <th >Created By</th>
                       <th >Created Date</th>
                       <th >Action</th>
-                     
+
                     </tr>
-                   
+
                   </thead>
                   <tbody>
-                 
+
 @foreach($getRecord as $value)
 <tr>
 <td>{{ $value->id }}</td>
 <td>{{ $value->name }}</td>
 <td>
-@if($value->status == 0)
+{{-- @if($value->status == 0)
 Active
 @else
 Inactive
-@endif
+@endif --}}
 </td>
 <td>{{ $value->created_by_name }}</td>
 <td>{{ date('d-m-Y H:i A', strtotime($value->created_at)) }}</td>
 <td> <a href="{{ url('admin/subject/edit/'.$value->id) }}" class="btn btn-primary">Edit</a>
                       <a href="{{ url('admin/subject/Delete/'.$value->id) }}" class="btn btn-danger">Delete</a></td>
 </tr> @endforeach
-                   
+
                   </tbody>
                 </table>
                 <div style="padding; 10px;  float: right;">
@@ -110,7 +110,7 @@ Inactive
     </section>
     <!-- /.content -->
   </div>
-@endsection    
+@endsection
 
 
 

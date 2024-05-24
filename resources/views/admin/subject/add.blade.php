@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Add New Subject</h1>
           </div>
-         
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -31,24 +31,24 @@
 
                   <div class="form-group">
                     <label>Subject type</label>
-                   
+
                     <select class="form-control" name="type" required>
                     <option value="">Select Type</option>
                     <option value="Theory">Theory    </option>
                     <option value="Practical">Practical</option>
-                   
+
                 </select>
-                 
+
                 </div>
 
 
-                  <div class="form-group">
+                  {{-- <div class="form-group">
                     <label>Status</label>
                     <select class="form-control" name="status">
                     <option value="0">Active</option>
-                    <option value="1">Inactive</option>
+                    <option value="1">Inactive</option> --}}
                 </select>
-                 
+
                 </div>
                 <!-- /.card-body -->
 
@@ -59,11 +59,11 @@
             </div>
             <!-- /.card -->
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-       
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
@@ -72,5 +72,5 @@
     <!-- /.content -->
   </div>
 
-@endsection    
+@endsection
 

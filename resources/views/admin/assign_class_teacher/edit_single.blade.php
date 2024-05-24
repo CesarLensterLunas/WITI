@@ -9,7 +9,7 @@
           <div class="col-sm-6">
             <h1>Edit Assign Class Teacher</h1>
           </div>
-          
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
@@ -43,14 +43,14 @@
                     <option {{ ($getRecord->teacher_id==$teacher->id) ? 'selected':''}} value="{{ $teacher->id }}">{{ $teacher->name }} {{ $teacher->last_name }}</option>
                     @endforeach
                 </select>
- 
+
                   </div>
-                  <div class="form-group">
+                  {{-- <div class="form-group">
             <label>Status</label>
             <select class="form-control" name="status">
            <option {{ ($getRecord->status == 0) ? 'selected' : '' }} value="0">Active</option>
            <option {{ ($getRecord->status == 1) ? 'selected' : '' }} value="1">Inactive</option>
-           </select>
+           </select> --}}
 </div>
 <!--/.card-body -->
 <div class="card-footer">
@@ -60,11 +60,11 @@
 </div>
 
 
-           
+
           </div>
           <!--/.col (left) -->
           <!-- right column -->
-        
+
           <!--/.col (right) -->
         </div>
         <!-- /.row -->
