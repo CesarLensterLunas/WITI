@@ -130,14 +130,21 @@ class StudentController extends Controller
 
     public function delete($id)
     {
-        $getRecord = UsersStudent::getSingle($id);
-        if (!empty($getRecord)) {
-            $getRecord->is_delete = 1;
-            $getRecord->save();
-            return redirect()->back()->with('success', "Student Successfully Deleted");
-        } else {
+        $student = UsersStudent::getSingle($id);
+        if (!$student) {
             abort(404);
         }
+
+        $student->is_delete = 1;
+        $student->save();
+
+        $user = User::find($id);
+        if ($user) {
+            $user->is_delete = 1;
+            $user->save();
+        }
+
+        return redirect()->back()->with('success', "Student Successfully Archive");
     }
 
     public function MyStudent()

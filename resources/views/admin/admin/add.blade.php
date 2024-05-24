@@ -35,11 +35,7 @@
                                     <input type="email" class="form-control" value="{{ old('email') }}" name="email" required placeholder="Enter email">
                                     <div style="color:red">{{ $errors->first('email') }}</div>
                                 </div>
-                                <div class="form-group">
-                                    <label>Profile Pic <span style="color: red;"></span></label>
-                                    <input type="file" class="form-control" name="profile_pic">
-                                    <div style="color:red">{{ $errors->first('profile_pic') }}</div>
-                                </div>
+
                             </div>
                             <!-- /.card-body -->
 

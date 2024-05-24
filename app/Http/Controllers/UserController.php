@@ -34,7 +34,9 @@ class UserController extends Controller
 
         $request->validate([
             'name' => 'required|string|max:255',
-            'email' => 'required|email|unique:users,email,' . $id
+            'last_name' => 'nullable|string|max:255', // Assuming last_name is nullable
+            'email' => 'required|email|unique:users,email,' . $id,
+            'profile_pic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust max file size as needed
             // Add more validation rules as needed
         ]);
 
@@ -42,14 +44,14 @@ class UserController extends Controller
         $admin->name = trim($request->name);
         $admin->last_name = trim($request->last_name);
         $admin->email = trim($request->email);
-        if (!empty($request->file('profile_pic'))) {
-            $ext = $request->file('profile_pic')->getClientOriginalExtension();
+
+        if ($request->hasFile('profile_pic')) {
             $file = $request->file('profile_pic');
-            $randomStr = date('Ymdhis') . Str::random(20);
-            $filename = strtolower($randomStr) . '.' . $ext;
+            $filename = strtolower(date('Ymdhis') . Str::random(20)) . '.' . $file->getClientOriginalExtension();
             $file->move('upload/profile/', $filename);
             $admin->profile_pic = $filename;
         }
+
         $admin->save();
 
         return redirect()->back()->with('success', "Account Successfully Updated");
@@ -64,11 +66,13 @@ class UserController extends Controller
     {
         $id = Auth::user()->id;
 
-        $request->validate([
+        $validatedData = $request->validate([
             'email' => 'required|email|unique:users,email,' . $id,
-            'mobile_number' => 'max:15|min:8',
-            'marital_status' => 'max:50',
-            // Add validation rules for other fields as needed
+            'weight' => 'nullable|numeric|max:300', // Assuming weight is in kilograms
+            'height' => 'nullable|numeric|max:250', // Assuming height is in centimeters
+            'blood_group' => 'required|max:10',
+            'mobile_number' => ['required', 'regex:/^(09|\+639)[\d -]{9,11}$/'], // Validate Philippine mobile numbers
+            'profile_pic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
 
         $teacher = User::getSingle($id);

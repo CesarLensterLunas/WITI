@@ -51,10 +51,10 @@
                                         <label>Mobile Number</label>
                                         <input type="text" class="form-control" name="mobile_number" value="{{ Request::get('mobile_number') }}" placeholder="Mobile Number">
                                     </div>
-                                    <div class="form-group col-md-2">
+                                    {{-- <div class="form-group col-md-2">
                                         <label>Marital Status</label>
                                         <input type="text" class="form-control" name="marital_status" value="{{ Request::get('marital_status') }}" placeholder="Marital Status">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group col-md-2">
                                         <label>Current Address</label>
                                         <input type="text" class="form-control" name="address" value="{{ Request::get('address') }}" placeholder="Current Address">

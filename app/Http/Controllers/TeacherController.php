@@ -188,21 +188,46 @@ class TeacherController extends Controller
 
         return redirect('admin/teacher/list')->with('success', "Teacher Successfully Updated");
     }
+    // public function delete($id)
+    // {
+
+    // $teacher = Usersteacher::getSingle($id);
+    // if (!$teacher) {
+    //     abort(404);
+    // }
+
+    // $teacher->is_delete = 1;
+    // $teacher->save();
+
+    // $user = User::find($id);
+    // if ($user) {
+    //     $user->is_delete = 1;
+    //     $user->save();
+    // }
+    // return redirect()->back()->with('success', "Student Successfully Archive");
+    // }
     public function delete($id)
     {
-        $getRecord = Usersteacher::getSingle($id);
-        if (!empty($getRecord)) {
-            $getRecord->is_delete = 1;
-            $getRecord->save();
-            return redirect()->back()->with('success', "Teacher Successfully Deleted");
-        } else {
-            abort(404);
+        $teacher = Usersteacher::find($id);
+
+        if (!$teacher) {
+            return redirect()->back()->with('error', 'Teacher not found.');
         }
+
+        // Permanently delete the teacher
+        $teacher->forceDelete();
+
+        $user = User::find($id);
+
+        if ($user) {
+            // Permanently delete the associated user record
+            $user->forceDelete();
+        }
+
+        return redirect()->back()->with('success', 'Teacher successfully deleted.');
     }
 
+
 }
-
-
-
 
 

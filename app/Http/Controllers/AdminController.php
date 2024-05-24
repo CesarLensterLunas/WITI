@@ -15,23 +15,24 @@ use Str;
 
 class AdminController extends Controller
 {
-    public function list(){
+    public function list()
+    {
         $data['getRecord'] = User::getAdmin();
-        $data['header_title']='Admin List';
-        return view('admin.admin.list',$data);
+        $data['header_title'] = 'Admin List';
+        return view('admin.admin.list', $data);
 
     }
-    public function add(){
+    public function add()
+    {
 
         $data['header_title'] = 'Add New Admin';
-        return view('admin.admin.add',$data);
+        return view('admin.admin.add', $data);
 
     }
     public function insert(Request $request)
     {
         request()->validate([
             'email' => 'required|email|unique:users'
-
         ]);
 
         $user = new User;
@@ -39,11 +40,14 @@ class AdminController extends Controller
         $user->email = trim($request->email);
         $user->password = Hash::make('Password123!!!');
         $user->user_type = 1;
+        $user->profile_pic = 'Admin.png'; // Set default profile picture
         $user->save();
+
         Mail::to($user->email)->send(new CreateAccountMail($user));
 
-        return redirect('admin/admin/list')->with('success', "Admin Sucessfully Created");
+        return redirect('admin/admin/list')->with('success', "Admin Successfully Created");
     }
+
 
 
 
@@ -51,14 +55,11 @@ class AdminController extends Controller
     public function edit($id)
     {
         $data['getRecord'] = User::getSingle($id);
-        if (!empty($data['getRecord']))
-        {
+        if (!empty($data['getRecord'])) {
             $data['header_title'] = "Edit Admin";
-        return view('admin.admin.edit',$data);
+            return view('admin.admin.edit', $data);
 
-        }
-        else
-        {
+        } else {
             abort(404);
 
         }
@@ -67,7 +68,11 @@ class AdminController extends Controller
     public function update($id, Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users,email,' . $id
+            'name' => 'required|string|max:255',
+            'last_name' => 'nullable|string|max:255', // Assuming last_name is nullable
+            'email' => 'required|email|unique:users,email,' . $id,
+
+            // Add more validation rules as needed
         ]);
 
         $user = User::find($id);
@@ -75,11 +80,13 @@ class AdminController extends Controller
         $user->last_name = trim($request->last_name);
         $user->email = trim($request->email);
 
-        if ($request->hasFile('profile_pic')) {
+
+        if (!empty($request->file('profile_pic'))) {
             $ext = $request->file('profile_pic')->getClientOriginalExtension();
+            $file = $request->file('profile_pic');
             $randomStr = date('Ymdhis') . Str::random(20);
             $filename = strtolower($randomStr) . '.' . $ext;
-            $request->file('profile_pic')->move(public_path('upload/profile/'), $filename);
+            $file->move('upload/profile/', $filename);
             $user->profile_pic = $filename;
         }
 
@@ -90,26 +97,33 @@ class AdminController extends Controller
 
 
 
-public function Delete($id)
-{
-    $user = User::find($id);
 
-    if (!$user) {
-        return redirect()->back()->with('error', 'Admin not found.');
+    public function Delete($id)
+    {
+        $user = User::find($id);
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Admin not found.');
+        }
+
+        // Check if the user being deleted is the current authenticated user
+        if ($user->id === Auth::user()->id) {
+            return redirect()->back()->with('error', 'You cannot delete your own account.');
+        }
+
+        // Check if the user being deleted has super = 1
+        if ($user->super == 1) {
+            return redirect()->back()->with('error', 'You cannot delete a super admin.');
+        }
+
+        // Permanently delete the admin
+        $user->forceDelete();
+
+
+        return redirect('admin/admin/list')->with('success', 'Account successfully deleted.');
     }
 
-    // Permanently delete the admin
-    $user->forceDelete();
 
-    return redirect('admin/admin/list')->with('success', 'Admin successfully deleted.');
-}
-public function school_year(){
-    $data['getRecord'] = UsersStudent::getStudent();
-    $data['header_title']='Academic Year';
-    return view('admin.school_year.list',$data);
-
-
-}
 }
 
 

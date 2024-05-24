@@ -74,12 +74,18 @@
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                            <label>Marital Status <span style="color: red;"></span></label>
-                                            <input type="text" class="form-control"
-                                                value="{{ old('marital_status', $getRecord->marital_status) }}"
-                                                name="marital_status" placeholder="Marital Status">
+                                            <label for="marital_status">Marital Status <span style="color: red;">*</span></label>
+                                            <select id="marital_status" class="form-control" name="marital_status">
+                                                <option value="" selected disabled>Select Marital Status</option>
+                                                <option value="Single" {{ (old('marital_status', $getRecord->marital_status) == 'Single') ? 'selected' : '' }}>Single</option>
+                                                <option value="Married" {{ (old('marital_status', $getRecord->marital_status) == 'Married') ? 'selected' : '' }}>Married</option>
+                                                <option value="Divorced" {{ (old('marital_status', $getRecord->marital_status) == 'Divorced') ? 'selected' : '' }}>Divorced</option>
+                                                <option value="Widowed" {{ (old('marital_status', $getRecord->marital_status) == 'Widowed') ? 'selected' : '' }}>Widowed</option>
+                                                <!-- Add more options if needed -->
+                                            </select>
                                             <div style="color:red">{{ $errors->first('marital_status') }}</div>
                                         </div>
+
                                         <div class="form-group col-md-6">
                                             <label>Profile Pic <span style="color: red;"></span></label>
                                             <input type="file" class="form-control" name="profile_pic">
@@ -136,11 +142,7 @@
                                             placeholder="Enter email">
                                         <div style="color:red">{{ $errors->first('email') }}</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Password<span style="color: red;">*</span></label>
-                                        <input type="text" class="form-control" name="password"
-                                            placeholder="Password">
-                                    </div>
+
 
                                 </div>
                                 <!-- /.card-body -->

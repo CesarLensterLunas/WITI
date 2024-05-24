@@ -166,11 +166,11 @@
                                         <a href="{{ url('admin/student/edit/'.$value->id) }}" class="btn btn-primary btn-sm">Edit</a>
                                         <a href="#"
                                             onclick="confirmDelete('{{ url('admin/student/delete/' . $value->id) }}')"
-                                            class="btn btn-danger btn-sm">Delete</a>
+                                            class="btn btn-danger btn-sm">Archive</a>
 
                                         <script>
                                             function confirmDelete(deleteUrl) {
-                                                if (confirm("Are you sure you want to delete this student info?")) {
+                                                if (confirm("Are you sure you want to archive this student info?")) {
                                                     // If user clicks OK, proceed with deletion
                                                     window.location.href = deleteUrl;
                                                 } else {

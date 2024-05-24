@@ -39,13 +39,7 @@
                     <input type="Text" class="form-control" value="{{ old('last_name', $getRecord->last_name)}}" name="last_name" Required placeholder="Last Name">
                     <div style="color:red">{{ $errors->first('last_name')}}</div>
                   </div>
-                  <div class="form-group col-md-6">
-                    <label>Profile Pic <span style="color: red;"></span></label>
-                    <input type="file" class="form-control" name="profile_pic">
-                    <div style="color:red">{{ $errors->first('profile_pic') }}</div>
-                    @if(!empty($getRecord->getProfile()))
-                    <img src="{{ $getRecord->getProfile() }}" style="width: auto; height: 50px;">
-                    @endif
+
                 </div>
 
 

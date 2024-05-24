@@ -105,14 +105,14 @@
               </a>
           </li>
 
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{ url('admin/school_year/list') }}" class="nav-link @if(Request::segment(2)=='school_year') active @endif">
               <i class="nav-icon far fa-user"></i>
               <p>
               School Year
               </p>
             </a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <a href="{{ url('admin/student/list') }}" class="nav-link @if(Request::segment(2)=='student') active @endif">

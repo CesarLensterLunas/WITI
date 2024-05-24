@@ -38,7 +38,7 @@
         <option value="">Select Gender</option>
         <option {{ (old('gender') == 'Male') ? 'selected' : '' }} value="Male">Male</option>
         <option {{ (old('gender') == 'Female') ? 'selected' : '' }} value="Female">Female</option>
-        
+
     </select>
     <div style="color:red">{{ $errors->first('gender') }}</div>
 </div>
@@ -58,10 +58,18 @@
     <div style="color:red">{{ $errors->first('mobile_number') }}</div>
 </div>
 <div class="form-group col-md-6">
-    <label>Marital Status <span style="color: red;"></span></label>
-    <input type="text" class="form-control" value="{{ old('marital_status') }}" name="marital_status" placeholder="Marital Status">
+    <label for="marital_status">Marital Status <span style="color: red;">*</span></label>
+    <select id="marital_status" class="form-control" name="marital_status">
+        <option value="" selected disabled>Select Marital Status</option>
+        <option value="Single" {{ old('marital_status') == 'Single' ? 'selected' : '' }}>Single</option>
+        <option value="Married" {{ old('marital_status') == 'Married' ? 'selected' : '' }}>Married</option>
+        <option value="Divorced" {{ old('marital_status') == 'Divorced' ? 'selected' : '' }}>Divorced</option>
+        <option value="Widowed" {{ old('marital_status') == 'Widowed' ? 'selected' : '' }}>Widowed</option>
+        <!-- Add more options if needed -->
+    </select>
     <div style="color: red">{{ $errors->first('marital_status') }}</div>
 </div>
+
 
 <div class="form-group col-md-6">
     <label>Profile Pic <span style="color: red;"></span></label>
@@ -110,10 +118,10 @@
     <input type="email" class="form-control" name="email" value="{{ old('email') }}" required placeholder="Email">
     <div style="color:red">{{ $errors->first('email') }}</div>
 </div>
-<div class="form-group">
+{{-- <div class="form-group">
     <label>Password <span style="color: red;">*</span></label>
     <input type="password" class="form-control" name="password" required placeholder="Password">
-</div>
+</div> --}}
 </div>
 <!--/.card-body -->
 <div class="card-footer">
