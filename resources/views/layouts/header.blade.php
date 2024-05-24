@@ -166,7 +166,7 @@
 
           <li class="nav-item">
             <a href="{{ url('admin/class_timetable/list') }}" class="nav-link @if(Request::segment(2)=='class_timetable') active @endif">
-            <i class="far fa-circle nav-icon"></i>
+                <i class="nav-icon far fa-calendar-alt"></i>
               <p>
               Class Timetable
               </p>
@@ -206,7 +206,7 @@
 
 <li class="nav-item">
         <a href="{{ url('/log-viewer') }}" class="nav-link @if(Request::segment (2)== 'log-viewer') active @endif">
-        <i class="far fa-circle nav-icon"></i>
+        <i class="nav-icon fas fa-file"></i>
               <p>
                 Activity logs
              </p>
@@ -214,7 +214,7 @@
         </li>
         <li class="nav-item">
             <a href="{{ url('admin/account') }}" class="nav-link @if(Request::segment (2)== 'account') active @endif">
-            <i class="far fa-circle nav-icon"></i>
+                <i class="nav-icon far fa-user"></i>
                   <p>
                     My Account
                  </p>
@@ -222,7 +222,7 @@
             </li>
           <li class="nav-item">
             <a href="{{ url('admin/change_password') }}" class="nav-link @if(Request::segment(2)=='change_password') active @endif">
-              <i class="nav-icon far fa-user"></i>
+                <i class="nav-icon far fa-user"></i>
               <p>
               Change Password
               </p>
