@@ -47,6 +47,7 @@ class UsersStudent extends Authenticatable implements MustVerifyEmail
 
 
 
+
     static public function getsingle($id)
     {
         return self::find($id);

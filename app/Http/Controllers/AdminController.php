@@ -50,7 +50,7 @@ class AdminController extends Controller
 
     public function edit($id)
     {
-        $data['getRecord'] = UsersStudent::getSingle($id);
+        $data['getRecord'] = User::getSingle($id);
         if (!empty($data['getRecord']))
         {
             $data['header_title'] = "Edit Admin";
@@ -66,29 +66,28 @@ class AdminController extends Controller
     }
     public function update($id, Request $request)
     {
-                            request()->validate([
-                                'email' => 'required|email|unique:users,email,'.$id
+        $request->validate([
+            'email' => 'required|email|unique:users,email,' . $id
+        ]);
 
-                            ]);
-                        $user = User::getSingle($id);
-                        $user->name = trim($request->name);
-                        $user->last_name = trim($request->last_name);
-                        $user->email = trim($request->email);
-                        if(!empty($request->file('profile_pic')))
+        $user = User::find($id);
+        $user->name = trim($request->name);
+        $user->last_name = trim($request->last_name);
+        $user->email = trim($request->email);
 
-                        {
+        if ($request->hasFile('profile_pic')) {
+            $ext = $request->file('profile_pic')->getClientOriginalExtension();
+            $randomStr = date('Ymdhis') . Str::random(20);
+            $filename = strtolower($randomStr) . '.' . $ext;
+            $request->file('profile_pic')->move(public_path('upload/profile/'), $filename);
+            $user->profile_pic = $filename;
+        }
 
-                        $ext = $request->file('profile_pic')->getClientOriginalExtension();
-                        $file = $request->file('profile_pic');
-                        $randomStr = date('Ymdhis').Str::random(20);
-                        $filename = strtolower($randomStr).'.'.$ext;
-                        $file->move('upload/profile/', $filename);
+        $user->save();
 
-                        $user->profile_pic = $filename;
-                    }
-                        $user->save();
-                        return redirect('admin/admin/list')->with('success', "Admin Sucessfully updated");
-}
+        return redirect('admin/admin/list')->with('success', "Admin Successfully Updated");
+    }
+
 
 
 public function Delete($id)

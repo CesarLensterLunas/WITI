@@ -21,7 +21,6 @@
                 <div class="col-md-12">
                     <!-- general form elements -->
                     <div class="card card-primary">
-                        
                         <!-- /.card-header -->
                         <!-- form start -->
                         <form method="post" action="">
@@ -36,10 +35,10 @@
                                     <input type="email" class="form-control" value="{{ old('email') }}" name="email" required placeholder="Enter email">
                                     <div style="color:red">{{ $errors->first('email') }}</div>
                                 </div>
-                                <div class="form-group col-md-6">
-                    <label>Profile Pic <span style="color: red;"></span></label>
-                    <input type="file" class="form-control" name="profile_pic">
-                    <div style="color:red">{{ $errors->first('profile_pic')}}</div>
+                                <div class="form-group">
+                                    <label>Profile Pic <span style="color: red;"></span></label>
+                                    <input type="file" class="form-control" name="profile_pic">
+                                    <div style="color:red">{{ $errors->first('profile_pic') }}</div>
                                 </div>
                             </div>
                             <!-- /.card-body -->
@@ -52,14 +51,10 @@
                     <!-- /.card -->
                 </div>
                 <!--/.col (left) -->
-                <!-- right column -->
-
-                <!--/.col (right) -->
             </div>
             <!-- /.row -->
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
 </div>
-
 @endsection

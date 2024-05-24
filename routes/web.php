@@ -17,7 +17,8 @@ use App\Http\Controllers\FeesCollectionController;
 use App\Http\Controllers\GradesController;
 use App\Http\Controllers\StudentdashboardController;
 use App\Http\Controllers\TeacherdashboardController;
-use App\Http\Controllers\SchoolYearController;
+use App\Http\Controllers\AccountController;
+
 use Illuminate\Support\Facades\Mail;
 
 
@@ -98,6 +99,8 @@ Route::group(['middleware'=>'admin'], function(){
     Route::get('admin/student/edit/{id}', [StudentController::class, 'edit']);
     Route::post('admin/student/edit/{id}', [StudentController::class, 'update']);
     Route::get('admin/student/delete/{id}', [StudentController::class, 'delete']);
+
+    Route::post('update-accounts-status', [AccountController::class, 'updateAccountsStatus'])->name('update.accounts.status');
 
  //Teacher
  Route::get('admin/teacher/list', [TeacherController::class, 'list']);
