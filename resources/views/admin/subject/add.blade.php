@@ -46,8 +46,8 @@
                     <label>Status</label>
                     <select class="form-control" name="status">
                     <option value="0">Active</option>
-                    <option value="1">Inactive</option> --}}
-                </select>
+                    <option value="1">Inactive</option>
+                </select> --}}
 
                 </div>
                 <!-- /.card-body -->

@@ -48,7 +48,6 @@ class ClassController extends Controller
     {
         $save = ClassModel::getSingle($id);
         $save->name = $request->name;
-        $save->status = $request->status;
         $save->save();
         return redirect('admin/class/list')->with('success', "Class Successfully Updated");
     }
