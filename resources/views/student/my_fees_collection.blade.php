@@ -1,5 +1,5 @@
 @extends('layouts.app')
- @section('content') 
+ @section('content')
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -26,14 +26,15 @@
     <table class="table table-striped">
         <thead>
             <tr>
-               
+                <th>Fees</th>
                 <th>Total Amount</th>
                 <th>Date</th>
                 <th>OR#/AR#</th>
-                <th>Payment</th>
+                <th>Last Payment</th>
                 <th>Remark</th>
                 <th>Remaining Balance</th>
-       
+                <th>Status</th>
+
              </tr>
         </thead>
         <tbody>
@@ -48,19 +49,32 @@
             </tr>
             @empty
             <tr>
-                                            <td>5550</td>
+                <td>Tuition</td>
+                                            <td>₱5550</td>
                                             <td>2/19/2024</td>
                                             <td>M12345</td>
-                                            <td>2000</td>
+                                            <td>₱2000</td>
                                             <td>chinabank</td>
-                                            <td>3550</td>
+                                            <td>₱3550</td>
+                                            <td>Pending</td>
+
+                                        </tr>
+                                        <tr>
+                                            <td>Grade with seal</td>
+                                            <td>₱100</td>
+                                            <td>2/19/2024</td>
+                                            <td>M12345</td>
+                                            <td>₱100</td>
+                                            <td>chinabank</td>
+                                            <td>₱0</td>
+                                            <td>Paid</td>
 
                                         </tr>
             @endforelse
-            
+
         </tbody>
         </table>
-    </div> 
+    </div>
 </div>
 </div>
 </div>
@@ -79,12 +93,12 @@
             </div>
             <form action="{{ url('your_action_url') }}" method="post">
                 {{ csrf_field() }}
-                
+
                     <div class="form-group">
     <label class="col-form-label">Amount <span style="color:red;">*</span></label>
     <input type="number" class="form-control" name="amount">
         </div>
-            
+
         <div class="form-group">
             <label class="col-form-label">Payment Type <span style="color:red;">*</span></label>
             <select class="form-control" name="payment_type" required>
@@ -93,7 +107,7 @@
                 <option value="Cheque">Cheque</option>
             </select>
         </div>
-        
+
         <div class="form-group">
             <label class="col-form-label">Remark</label>
             <textarea class="form-control" name="remark"></textarea>

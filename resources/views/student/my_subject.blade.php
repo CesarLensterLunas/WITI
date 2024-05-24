@@ -10,21 +10,21 @@
           <div class="col-sm-6">
             <h1>My Subject </h1>
           </div>
-           
 
-         
+
+
         </div>
       </div><!-- /.container-fluid -->
     </section>
 
     <!-- Main content -->
     <section class="content">
-   
+
           <!-- /.col -->
           <div class="col-md-12">
 
 
-           
+
             <!-- /.cardSADASDASDASDASDSDASDASDASDKJHQW  OI;HDE OUQWHUDOHQOUWHDAUHSDIKUAHSDILUAHSDIOUAS -->
             @include('_message')
 
@@ -38,16 +38,16 @@
                   <thead>
                     <tr>
                      <th>Subject Code</th>
-                    
+
                       <th>Subject Name</th>
-                      
+
                       <th>Schedule</th>
                       <th>Units</th>
                       <th>Teacher</th>
-                     
-                      
+                      <th>Room</th>
+
                     </tr>
-                   
+
                   </thead>
                   <tbody>
                   <tbody>
@@ -63,13 +63,14 @@
 
     <!-- Additional subjects with placeholder schedules -->
 
-    
+
     <tr>
         <td>COMP101</td>
         <td>Introduction to Computer Science</td>
         <td>Tuesday 1:00 PM - 3:00 PM</td>
         <td>3</td>
-        <td>Dr. Smith</td>
+        <td>Mr.Lumberto</td>
+        <td>Computer Lab 2</td>
     </tr>
     <tr>
         <td>MATH201</td>
@@ -77,8 +78,9 @@
         <td>Wednesday 10:00 AM - 12:00 PM</td>
         <td>4</td>
         <td>Mrs. Lee</td>
-        
-    
+        <td>Classroom 202</td>
+
+
     </tr>
     <tr>
         <td>PHYS101</td>
@@ -86,7 +88,7 @@
         <td>Thursday 2:00 PM - 4:00 PM</td>
         <td>3</td>
         <td>Ms. Natividad</td>
-        
+        <td>Classroom 201</td>
     </tr>
     <tr>
         <td>ENG101</td>
@@ -94,7 +96,7 @@
         <td>Friday 9:00 AM - 11:00 AM</td>
         <td>3</td>
         <td>Mrs. Gonzalez</td>
-        
+        <td>Classroom 205</td>
     </tr>
     <tr>
         <td>HIST101</td>
@@ -102,7 +104,7 @@
         <td>Monday 2:00 PM - 4:00 PM</td>
         <td>3</td>
         <td>Ms. Flores</td>
-        
+        <td>Classroom 207</td>
     </tr>
     <tr>
         <td>BIO101</td>
@@ -110,19 +112,19 @@
         <td>Tuesday 10:00 AM - 12:00 PM</td>
         <td>4</td>
         <td>Mr. Martinez</td>
-  
-        
+        <td>Classroom 202</td>
+
     </tr>
-   
-</tbody>
 
 </tbody>
 
+</tbody>
 
 
-  
+
+
                 </table>
-                
+
               <!-- /.card-body -->
             </div>
             <!-- /.card -->
@@ -135,7 +137,7 @@
     </section>
     <!-- /.content -->
   </div>
-@endsection    
+@endsection
 
 
 

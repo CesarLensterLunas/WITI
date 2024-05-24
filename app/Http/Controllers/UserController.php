@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Usersteacher;
 use App\Models\UsersStudent;
 use Illuminate\Http\Request;
@@ -129,21 +130,17 @@ class UserController extends Controller
 
     public function UpdateMyAccountStudent(Request $request)
     {
-        $request->validate([
-            'blood_group' => 'required|not_in:""',
-        ]);
 
         $id = Auth::user()->id;
 
-        $request->validate([
+        $validatedData = $request->validate([
             'email' => 'required|email|unique:users,email,' . $id,
-            'weight' => 'max:10',
-            'blood_group' => 'max:10',
-            'mobile_number' => 'max:15|min:8',
-
-            'height' => 'max:10',
+            'weight' => 'nullable|numeric|max:300', // Assuming weight is in kilograms
+            'height' => 'nullable|numeric|max:250', // Assuming height is in centimeters
+            'blood_group' => 'required|max:10',
+            'mobile_number' => ['required', 'regex:/^(09|\+639)[\d -]{9,11}$/'], // Validate Philippine mobile numbers
+            'profile_pic' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ]);
-
         $student = User::getSingle($id);
 
         if (!empty($request->file('profile_pic'))) {
@@ -166,21 +163,16 @@ class UserController extends Controller
         $student->email = trim($request->email);
 
         $student->save();
-
-
-            $students = UsersStudent::getSingle($id);
-            if(!empty($request->file('profile_pic')))
-
-            {
-
-            $ext = $request->file('profile_pic')->getClientOriginalExtension();
-            $file = $request->file('profile_pic');
-            $randomStr = date('Ymdhis').Str::random(20);
-            $filename = strtolower($randomStr).'.'.$ext;
-            $file->move('upload/profile/', $filename);
-
-            $students->profile_pic = $filename;
-        }
+        $students = UsersStudent::getSingle($id);
+        //     if(!empty($request->file('profile_pic')))
+        //     {
+        //     $ext = $request->file('profile_pic')->getClientOriginalExtension();
+        //     $file = $request->file('profile_pic');
+        //     $randomStr = date('Ymdhis').Str::random(20);
+        //     $filename = strtolower($randomStr).'.'.$ext;
+        //     $file->move('upload/profile/', $filename);
+        //     $students->profile_pic = $filename;
+        // }
 
         $students->name = trim($request->name);
         $students->last_name = trim($request->last_name);
@@ -190,13 +182,13 @@ class UserController extends Controller
             $student->date_of_birth = trim($request->date_of_birth);
         }
 
-                $students->mobile_number = trim($request->mobile_number);
-                $students->blood_group = trim($request->blood_group);
-                $students->height = trim($request->height);
-                $students->weight = trim($request->weight);
-                $students->email = trim($request->email);
+        $students->mobile_number = trim($request->mobile_number);
+        $students->blood_group = trim($request->blood_group);
+        $students->height = trim($request->height);
+        $students->weight = trim($request->weight);
+        $students->email = trim($request->email);
 
-                $students->save();
+        $students->save();
 
         return redirect()->back()->with('success', "Account Successfully Updated");
     }

@@ -98,14 +98,14 @@
 
                 <div class="form-group col-md-6">
                     <label>Height <span style="color: red;"></span></label>
-                    <input type="text" class="form-control" name="height" value="{{ old('height', $getRecord->height) }}" placeholder="Height">
+                    <input type="text" class="form-control" name="height" value="{{ old('height', $getRecord->height) }}" placeholder="Height (cm)">
                     <div style="color:red">{{ $errors->first('height')}}</div>
 
                   </div>
 
                 <div class="form-group col-md-6">
                     <label>Weight <span style="color: red;"></span></label>
-                    <input type="text" class="form-control" name="weight" value="{{ old('weight', $getRecord->weight) }}" placeholder="Weight">
+                    <input type="text" class="form-control" name="weight" value="{{ old('weight', $getRecord->weight) }}" placeholder="Weight (kg)">
                     <div style="color:red">{{ $errors->first('weight')}}</div>
 
                 </div>
